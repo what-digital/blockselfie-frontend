@@ -11,6 +11,7 @@ export default class WebcamCapture extends React.Component {
     // console.log('capture');
     const imageSrc = this.webcam.getScreenshot();
     console.log('imageSrc', imageSrc);
+    this.props.photoTaken(imageSrc);
   };
 
   render() {
@@ -28,7 +29,7 @@ export default class WebcamCapture extends React.Component {
           ref={this.setRef}
           screenshotFormat="image/jpeg"
           width={'100%'}
-          style={{  position: 'fixed', left: 0, top: 0}}
+          style={{  position: 'fixed', left: 0, top: 0, backgroundColor: 'black'}}
           videoConstraints={videoConstraints}
         />
         <button onClick={this.capture} className="closeButton">Capture photo</button>

@@ -107,9 +107,17 @@ class Requests extends Component {
     } else if (step === 1) {
       return (
         <div className="content col-12 d-flex justify-content-center">
-          <WebcamCapture />
+          <WebcamCapture photoTaken={(image) => {this.setState({step: 2, imageSrc: image})}}/>
         </div>
       )
+    } else if (step === 2) {
+      return (<div className="content col-12">
+        <h1>
+          Complete Verification Process
+        </h1>
+        <div>Image hash:</div>
+        <img src={this.state.imageSrc} />
+      </div>)
     }
   }
 
