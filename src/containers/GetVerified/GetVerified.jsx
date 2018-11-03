@@ -14,10 +14,9 @@ class GetVerified extends Component {
       result: "No result",
       step: 0,
     };
-    this.handleScan = this.handleScan.bind(this);
   }
 
-  handleScan(data) {
+  handleScan = (data) => {
     console.log("handleScan");
     if (data) {
       this.setState({
