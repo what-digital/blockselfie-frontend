@@ -17,3 +17,8 @@ export const fetchToDos = () => async dispatch => {
     });
   });
 };
+
+export const sendWif = wif => async dispatch => {
+  console.log("wif action:", wif)
+  // todosRef.push().set(newToDo);
+};
