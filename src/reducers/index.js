@@ -1,10 +1,7 @@
-import { FETCH_TODOS } from "../actions/types";
+import { combineReducers } from "redux";
 
-export default (state = {}, action) => {
-  switch (action.type) {
-    case FETCH_TODOS:
-      return action.payload;
-    default:
-      return state;
-  }
-};
+import data from "./dataReducer";
+
+export default combineReducers({
+  data
+});
