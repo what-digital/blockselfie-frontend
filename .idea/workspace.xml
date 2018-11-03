@@ -2,9 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="063f32d8-39d6-4c01-9629-a73022e2fc8d" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/config/dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/firebase.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/firebase.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/prod.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/prod.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin/__generated__/LayoutAdmin.graphql.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin/__generated__/StoryListAdmin.graphql.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin/__generated__/UserListAdmin.graphql.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin/__generated__/adminStoryListQuery.graphql.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin/__generated__/adminUserListQuery.graphql.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/__generated__/AutoUpdaterMutation.graphql.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/__generated__/AutoUpdater_user.graphql.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/__generated__/Layout.graphql.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/news/__generated__/News.graphql.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/news/__generated__/Story.graphql.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/news/__generated__/Submit.graphql.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/news/__generated__/newsQuery.graphql.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/news/__generated__/newsStoryQuery.graphql.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/news/__generated__/newsSubmitQuery.graphql.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/news/mutations/__generated__/CreateStoryMutation.graphql.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/news/mutations/__generated__/LikeStoryMutation.graphql.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/__generated__/pagesAboutQuery.graphql.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/__generated__/pagesHomeQuery.graphql.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/__generated__/pagesPrivacyQuery.graphql.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/user/__generated__/Account.graphql.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/user/__generated__/UserProfile.graphql.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/user/__generated__/userProfileQuery.graphql.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/user/__generated__/userQuery.graphql.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/user/mutations/__generated__/DeleteUserMutation.graphql.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/user/mutations/__generated__/UpdateUserMutation.graphql.js" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -36,13 +59,30 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="firebase.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="firebase.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/config/firebase.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="6" column="47" selection-start-line="6" selection-start-column="47" selection-end-line="6" selection-end-column="47" />
+            <state relative-caret-position="168">
+              <caret line="8" column="39" lean-forward="true" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="types.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/actions/types.js">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/actions/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="168">
+              <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+              <folding>
+                <element signature="e#0#46#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -93,6 +133,7 @@
         <option value="$PROJECT_DIR$/src/config/prod.js" />
         <option value="$PROJECT_DIR$/src/config/dev.js" />
         <option value="$PROJECT_DIR$/src/config/firebase.js" />
+        <option value="$PROJECT_DIR$/src/actions/index.js" />
       </list>
     </option>
   </component>
@@ -144,7 +185,19 @@
               <item name="neo-hackaton-zurich" type="b2602c69:ProjectViewProjectNode" />
               <item name="neo-hackaton-zurich" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="actions" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="neo-hackaton-zurich" type="b2602c69:ProjectViewProjectNode" />
+              <item name="neo-hackaton-zurich" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="neo-hackaton-zurich" type="b2602c69:ProjectViewProjectNode" />
+              <item name="neo-hackaton-zurich" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="reducers" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -260,10 +313,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/config/firebase.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="6" column="47" selection-start-line="6" selection-start-column="47" selection-end-line="6" selection-end-column="47" />
+        <state relative-caret-position="168">
+          <caret line="8" column="39" lean-forward="true" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/actions/types.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/actions/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#46#0" expanded="true" />
           </folding>
         </state>
       </provider>
