@@ -1,11 +1,12 @@
-import "../../App.css";
+import "../../App.scss";
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import _ from "lodash";
 import * as actions from "../../actions";
-import QrReader from "react-qr-reader";
-var FontAwesome = require('react-fontawesome');
+import {getFromLS, saveToLS} from "../../utils/client";
+import WifLoader from "../../components/WifLoader/WifLoader";
+var QRCode = require('qrcode.react');
 
 const addressLength = 32;
 
@@ -14,63 +15,61 @@ class GetVerified extends Component {
     super(props);
     this.state = {
       delay: 300,
-      result: "",
-      step: 0,
+      wif: "",
+      step: getFromLS('user', 'wif') ? 1 : 0,
       scanner: false,
     };
   }
 
-  handleScan = (data) => {
-    console.log("handleScan");
-    if (data) {
-      this.setState({
-        result: data,
-        scanner: false
-      });
-    }
-  }
-
-  handleError(err) {
-    console.error(err);
-  }
 
   componentWillMount() {
     // this.props.fetchToDos();
   }
 
-  submitWif = (e) => {
-    e.preventDefault();
-    console.log("submit wif", e.currentTarget[0].value, e.target[0].value);
+  submitWif = (value) => {
+    console.log("submit wif", value);
     const { sendWif } = this.props;
-    sendWif({'wif': e.currentTarget[0].value});
+    sendWif({'wif': value});
+    this.setState({step: 1});
+  }
+
+  renderStep0() {
+    return (
+      <WifLoader onSubmit={this.submitWif}/>
+    )
+  }
+
+  renderStep1() {
+    return (
+      <div className="stepContainer text-center">
+        <div className="col-12">
+          Your NEO Wallet address: {getFromLS('user', 'wif')}
+          <div className="col-12">
+            <QRCode value={getFromLS('user', 'wif')} size='360'/>
+          </div>
+        </div>
+        <div className="col-12 mt-2">
+          <Button type="button">Start Verification</Button>
+        </div>
+      </div>
+    )
+  }
+
+  renderSteps(step) {
+    if (step === 0) {
+      return this.renderStep0()
+    } else if (step ===1) {
+      return this.renderStep1()
+    }
   }
 
   render() {
     const { step } = this.state;
     return (
       <div className="content">
-      <form onSubmit={(e) => this.submitWif(e)} style={{textAlign: 'center'}}>
-         <FormGroup>
-           <Label for="wif">Enter Your WIF</Label>
-           <button role="button" className="qrCodeButton" title="Use QRCode Scaner" onClick={() => this.setState({scanner: !this.state.scanner})}>
-               <FontAwesome
-                 className='qrcode'
-                 name='qrcode'
-                 size='2x'
-                 style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
-               />
-           </button>
-           <Input type="text" name="WIF" id="wif" placeholder="WIF" value={this.state.result}/>
-         </FormGroup>
-         <Button type="submit">Submit</Button>
-       </form>
-       {this.state.scanner && <QrReader
-          delay={this.state.delay}
-          onError={this.handleError}
-          onScan={this.handleScan}
-          className="qrCodeScanner"
-        />}
-        {this.state.scanner && <button role="button" onClick={() => this.setState({scanner: false})} className="closeButton">CLOSE SCANNER</button>}
+        {
+          this.renderSteps(step)
+        }
       </div>
     );
   }

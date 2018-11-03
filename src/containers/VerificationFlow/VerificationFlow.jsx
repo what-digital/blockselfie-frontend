@@ -4,21 +4,55 @@ import { connect } from "react-redux";
 import _ from "lodash";
 import * as actions from "../../actions";
 import ToDoListItem from "../../components/ToDoListItem";
+import Loading from "../../components/Loading";
+import {getFromLS, saveToLS} from "../../utils/client";
+import { NavLink } from 'reactstrap';
+
+var QRCode = require('qrcode.react');
+
 
 class VerificationFlow extends Component {
   state = {
     step: 0,
+    loading: false
   };
 
   componentWillMount() {
     // this.props.fetchToDos();
   }
 
+  submitWif = (value) => {
+    console.log("submit wif ver flow", value);
+    const { sendWif } = this.props;
+    sendWif({'wif': value});
+    this.setState({step: 1});
+  }
+
+  renderStep0 = () => {
+    return (
+      <div className="stepContainer text-center">
+        <div className="col-12 mb-4">
+          My QR Code:
+        </div>
+        <div className="col-12">
+          <QRCode value={getFromLS('user', 'wif')} size='360'/>
+        </div>
+      </div>
+    )
+  }
+
+  renderSteps(step) {
+    if (step === 0) {
+      return getFromLS('user', 'wif') ? this.renderStep0() : <NavLink href="/wif-loader/">Enter your WIF first</NavLink>
+    }
+  }
+
   render() {
-    const { step } = this.state;
+    const { step, loading } = this.state;
     return (
       <div className="content">
-        {step}
+        {loading && <Loading text="Fetching..."/>}
+        {this.renderSteps(step)}
       </div>
     );
   }
