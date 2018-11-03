@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import _ from "lodash";
 import * as actions from "../../actions";
 import QrReader from "react-qr-reader";
+import WebcamCapture from "../../components/WebcamCapture/WebcamCapture";
+
 var FontAwesome = require('react-fontawesome');
 
 const addressLength = 32;
@@ -52,6 +54,30 @@ class Requests extends Component {
         <div className="wrapper">
           <div className="wrapper ">
             <div className="wide">
+              12-10-2018
+            </div>
+          </div>
+        </div>
+        <div className="wrapper group">
+          <div className="group grey">
+            fdghjkhgfd
+          </div>
+        </div>
+        <div className="wrappe">
+          <div className="group">
+            <button onClick={() => this.setState({step: 1})}>Accept</button>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  renderHeader() {
+    return (
+      <div className="table-row bordered">
+        <div className="wrapper">
+          <div className="wrapper ">
+            <div className="wide">
               Request
             </div>
           </div>
@@ -66,18 +92,31 @@ class Requests extends Component {
             Action
           </div>
         </div>
-
       </div>
     )
+  }
+
+  renderSteps(step) {
+    if (step === 0) {
+      return (
+        <div className="content col-12">
+          Incoming Verification Requests
+          {this.renderRow()}
+        </div>
+      )
+    } else if (step === 1) {
+      return (
+        <div className="content col-12 d-flex justify-content-center">
+          <WebcamCapture />
+        </div>
+      )
+    }
   }
 
   render() {
     const { step } = this.state;
     return (
-      <div className="content">
-        Incoming Verification Requests
-        {this.renderRow()}
-      </div>
+      this.renderSteps(step)
     );
   }
 }

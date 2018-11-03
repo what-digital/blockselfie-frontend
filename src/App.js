@@ -22,7 +22,7 @@ class App extends Component {
           <NotificationContainer/>
           <NavBar />
           <Router>
-            <div className="container main-container">
+            <div className="container-fluid main-container">
               <Route exact path="/" component={HomePage} />
               <Route exact path="/todo" component={ToDoList} />
               <Route exact path="/verify" component={VerificationFlow} />
