@@ -7,12 +7,14 @@ import * as actions from "../../actions";
 import QrReader from "react-qr-reader";
 var FontAwesome = require('react-fontawesome');
 
+const addressLength = 32;
+
 class GetVerified extends Component {
   constructor(props) {
     super(props);
     this.state = {
       delay: 300,
-      result: "No result",
+      result: "",
       step: 0,
       scanner: false,
     };
@@ -22,7 +24,8 @@ class GetVerified extends Component {
     console.log("handleScan");
     if (data) {
       this.setState({
-        result: data
+        result: data,
+        scanner: false
       });
     }
   }
@@ -51,13 +54,13 @@ class GetVerified extends Component {
            <Label for="wif">Enter Your WIF</Label>
            <button role="button" className="qrCodeButton" title="Use QRCode Scaner" onClick={() => this.setState({scanner: !this.state.scanner})}>
                <FontAwesome
-                   className='qrcode'
-                   name='qrcode'
-                   size='2x'
-                   style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
+                 className='qrcode'
+                 name='qrcode'
+                 size='2x'
+                 style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
                />
            </button>
-           <Input type="text" name="WIF" id="wif" placeholder="WIF" />
+           <Input type="text" name="WIF" id="wif" placeholder="WIF" value={this.state.result}/>
          </FormGroup>
          <Button type="submit">Submit</Button>
        </form>
