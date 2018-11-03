@@ -1,10 +1,11 @@
-// import "./ToDoList.css";
+import "../../App.css";
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import _ from "lodash";
 import * as actions from "../../actions";
 import QrReader from "react-qr-reader";
+var FontAwesome = require('react-fontawesome');
 
 class GetVerified extends Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class GetVerified extends Component {
       delay: 300,
       result: "No result",
       step: 0,
+      scanner: false,
     };
   }
 
@@ -47,17 +49,25 @@ class GetVerified extends Component {
       <form onSubmit={(e) => this.submitWif(e)} style={{textAlign: 'center'}}>
          <FormGroup>
            <Label for="wif">Enter Your WIF</Label>
+           <button role="button" className="qrCodeButton" title="Use QRCode Scaner" onClick={() => this.setState({scanner: !this.state.scanner})}>
+               <FontAwesome
+                   className='qrcode'
+                   name='qrcode'
+                   size='2x'
+                   style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
+               />
+           </button>
            <Input type="text" name="WIF" id="wif" placeholder="WIF" />
          </FormGroup>
-         <Button>Submit</Button>
+         <Button type="submit">Submit</Button>
        </form>
-       <QrReader
+       {this.state.scanner && <QrReader
           delay={this.state.delay}
           onError={this.handleError}
           onScan={this.handleScan}
-          style={{ width: "100%" }}
-        />
-        <p>{this.state.result}</p>
+          className="qrCodeScanner"
+        />}
+        {this.state.scanner && <button role="button" onClick={() => this.setState({scanner: false})} className="closeButton">CLOSE SCANNER</button>}
       </div>
     );
   }

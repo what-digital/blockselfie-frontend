@@ -40,3 +40,36 @@
   align-items: center;
   justify-content: center;
 }
+
+.closeButton {
+  position: fixed;
+  z-index: 10;
+  color: white;
+  left: 0;
+  top: 70px;
+  background-color: transparent;
+  right: 0;
+  margin: auto;
+  display: block;
+  width: 150px;
+}
+
+.qrCodeButton {
+  position: absolute;
+  right: 1px;
+  top: 32px;
+  height: 38px;
+}
+
+.qrCodeScanner {
+  width: 100%;
+  position: fixed;
+  left: 0px;
+  right: 0;
+  top: 115px;
+  bottom: 0;
+  height: 100vh;
+  display: block;
+  max-width: 100vh;
+  margin: auto;
+}
