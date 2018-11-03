@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import _ from "lodash";
 import * as actions from "../actions";
-import ToDoListItem from "./ToDoListItem";
+import ToDoListItem from "../components/ToDoListItem";
 
 class ToDoList extends Component {
   state = {
@@ -16,6 +16,7 @@ class ToDoList extends Component {
   };
 
   handleFormSubmit = event => {
+    console.log("handleFormSubmit", event);
     const { addFormValue } = this.state;
     const { addToDo } = this.props;
     event.preventDefault();
@@ -39,6 +40,7 @@ class ToDoList extends Component {
               />
               <label htmlFor="toDoNext">What To Do Next</label>
             </div>
+            <button type="submit">SUBMIT</button>
           </form>
         </div>
       );

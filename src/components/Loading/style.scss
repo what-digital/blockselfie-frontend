@@ -1,0 +1,56 @@
+
+.loading {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+
+  &.backdrop {
+    background-color: rgba(0,0,0,0.5);
+  }
+
+  &.fixed {
+    position: fixed;
+  }
+
+  p {
+    position: relative;
+    top: calc(50% - 50px);
+    text-align: center;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 20px;
+    white-space: pre;
+  }
+
+  .dloader {
+    svg {
+      height: 120px;
+      width: 120px;
+      margin: auto;
+      display: block;
+      fill: rgba(255, 255, 255, 0.72);
+    }
+  }
+
+  .logo {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 40px;
+    margin: auto;
+    width: 100px;
+
+    svg {
+      width: 100%;
+      fill: rgba(255, 255, 255, 0.72);
+    }
+  }
+
+  .loaderWrapper {
+    position: relative;
+    position: relative;
+    top: calc(50% - 60px);
+  }
+}
