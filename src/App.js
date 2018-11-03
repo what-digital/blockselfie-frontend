@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./App.css";
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import ToDoList from "./containers/ToDoList/ToDoList";
 import VerificationFlow from "./containers/VerificationFlow/VerificationFlow";
@@ -11,10 +12,10 @@ class App extends Component {
   render() {
     return (
       <div className="container-fluid">
-        <div className="row">
+        <div className="row" style={{flexDirection: 'column', height: '100vh'}}>
           <NavBar />
           <Router>
-            <div className="container">
+            <div className="container main-container">
               <Route exact path="/" component={HomePage} />
               <Route exact path="/todo" component={ToDoList} />
               <Route exact path="/verify" component={VerificationFlow} />
