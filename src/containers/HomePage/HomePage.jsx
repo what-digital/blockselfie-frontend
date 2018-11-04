@@ -2,16 +2,19 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import _ from "lodash";
-import * as actions from "../../actions";
+// import * as actions from "../../actions";
 import ToDoListItem from "../../components/ToDoListItem";
+import { getName } from "../../actions/neo/index";
 
-export default class HomePage extends Component {
+class HomePage extends Component {
   state = {
     // addFormVisible: false,
     // addFormValue: ""
   };
 
   componentWillMount() {
+    getName();
+    console.log('WAT?')
     // this.props.fetchToDos();
   }
 
@@ -24,10 +27,10 @@ export default class HomePage extends Component {
   }
 }
 
-// const mapStateToProps = ({ data }) => {
-//   return {
-//     data
-//   };
-// };
-//
-// export default connect(mapStateToProps, actions)(HomePage);
+const mapStateToProps = ({ data }) => {
+  return {
+    data
+  };
+};
+
+export default connect(mapStateToProps, {getName})(HomePage);
