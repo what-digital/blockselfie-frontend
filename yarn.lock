@@ -8390,6 +8390,13 @@ react-fontawesome@^1.6.1:
   dependencies:
     prop-types "^15.5.6"
 
+react-geolocated@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/react-geolocated/-/react-geolocated-2.4.0.tgz#36287997574a12bdccc01381abfe6c4d191b0ecf"
+  integrity sha512-0gHl4cxRWzTF3Wf8RB3WTWoAOwFeSs+GYpF+0oj0gYKZ1WkocIVTSXbHm3aD9iFl6O3BwisJd9n6C+3FaPQ8/A==
+  dependencies:
+    prop-types "^15.5.8"
+
 react-is@^16.3.2, react-is@^16.6.0:
   version "16.6.0"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.6.0.tgz#456645144581a6e99f6816ae2bd24ee94bdd0c01"

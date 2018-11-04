@@ -16,7 +16,7 @@ class GetVerified extends Component {
     this.state = {
       delay: 300,
       wif: "",
-      step: getFromLS('user', 'wif') ? 1 : 0,
+      step: getFromLS('userWif', 'value') ? 1 : 0,
       scanner: false,
     };
   }
@@ -44,9 +44,9 @@ class GetVerified extends Component {
       <div className="stepContainer text-center">
         <div className="col-12 px-0">
           <h2 className="mb-2">Your NEO Wallet address: </h2>
-          <p>{getFromLS('user', 'wif')}</p>
+          <p>{getFromLS('userAddress', 'value')}</p>
           <div className="col-12 px-0">
-            <QRCode value={getFromLS('user', 'wif')} size={330}/>
+            <QRCode value={getFromLS('userWif', 'value')} size={330}/>
           </div>
         </div>
         <div className="col-12 mt-2">

@@ -6,16 +6,14 @@ import _ from "lodash";
 import * as actions from "../../actions/firebase";
 import QrReader from "react-qr-reader";
 import WebcamCapture from "../../components/WebcamCapture/WebcamCapture";
-import GeoLocator from "../../components/GeoLocator/GeoLocator";
+import {getFromLS, saveToLS, parseTimestamp, parseDate} from "../../utils/client";
 
-import {getFromLS, saveToLS} from "../../utils/client";
 
-var MD5 = require("crypto-js/md5");
 var FontAwesome = require('react-fontawesome');
 
 const addressLength = 32;
 
-class Requests extends Component {
+class Timeline extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -28,49 +26,18 @@ class Requests extends Component {
     };
   }
 
-  handleScan = (data) => {
-    console.log("handleScan");
-    if (data) {
-      this.setState({
-        scannerResult: data,
-        scanner: false
-      });
-    }
-  }
-
-  handleError(err) {
-    console.error(err);
-  }
-
   componentWillMount() {
-    // this.props.fetchToDos();
+    this.props.fetchImages();
   }
 
-  submitWif = (e) => {
-    e.preventDefault();
-    console.log("submit wif", e.currentTarget[0].value, e.target[0].value);
-    const { sendWif } = this.props;
-    sendWif({'wif': e.currentTarget[0].value});
-  }
-
-  renderRow() {
+  renderRow(image) {
     return (
-      <div className="table-row bordered">
+      image.base64 && <div className="table-row bordered mb-4">
         <div className="wrapper">
-          <div className="wrapper ">
-            <div className="wide">
-              12-10-2018
-            </div>
-          </div>
-        </div>
-        <div className="wrapper group">
-          <div className="group grey">
-            fdghjkhgfd
-          </div>
-        </div>
-        <div className="wrappe">
-          <div className="group">
-            <Button onClick={() => this.setState({step: 1})} outline color="success" type="button">Accept</Button>
+          <div className="">
+            <img src={image.base64} style={{width: '200px'}} className="mb-2"/>
+            <p>{parseTimestamp(image.timestamp)}</p>
+            <p>Location: {image.latitude + ' ' + image.longitude}</p>
           </div>
         </div>
       </div>
@@ -81,30 +48,6 @@ class Requests extends Component {
     console.log('nextProps.history', nextProps.history.location.search);
   }
 
-  renderHeader() {
-    return (
-      <div className="table-row bordered">
-        <div className="wrapper">
-          <div className="wrapper ">
-            <div className="wide">
-              Request
-            </div>
-          </div>
-        </div>
-        <div className="wrapper group">
-          <div className="group grey">
-            Address
-          </div>
-        </div>
-        <div className="wrappe">
-          <div className="group">
-            Action
-          </div>
-        </div>
-      </div>
-    )
-  }
-
   goToStep2 = (image) => {
     this.setState({step: 2, imageSrc: image});
 
@@ -113,20 +56,15 @@ class Requests extends Component {
     })
   }
 
-  submitImage = () => {
-    const { addImage } = this.props;
-    console.log('SHA: ', );
-    console.log('renderHeader', this.props.coords && this.props.coords.latitude);
-    addImage(MD5(this.state.imageSrc).toString(), this.state.imageSrc, this.props.coords.latitude, this.props.coords.longitude);
-  }
-
   renderSteps(step) {
     if (step === 0) {
-
       return (
         <div className="content col-12">
-          Incoming Verification Requests
-          {this.renderRow()}
+          <h2 className="mb-2">Your Timeline</h2>
+          {this.props.data && Object.keys(this.props.data).map((key, idx) => {
+            return this.renderRow(this.props.data[key])
+          })
+            }
         </div>
       )
     } else if (step === 1) {
@@ -162,4 +100,4 @@ const mapStateToProps = ({ data }) => {
   };
 };
 
-export default connect(mapStateToProps, actions)(Requests);
+export default connect(mapStateToProps, actions)(Timeline);

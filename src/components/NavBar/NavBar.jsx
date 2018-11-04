@@ -37,13 +37,22 @@ export default class NavBar extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar >
               <NavItem>
+                <NavLink href="/my-code/">My QR code</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="/timeline/">My Timeline</NavLink>
+              </NavItem>
+              <NavItem>
                 <NavLink href="/lookup/">Lookup identity</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="/get-verified/">Get verified</NavLink>
               </NavItem>
+              <NavItem>
+                <NavLink href="/requests/">Verification Requests</NavLink>
+              </NavItem>
 
-              <UncontrolledDropdown nav inNavbar>
+              {/* <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
                   Verify Someone
                 </DropdownToggle>
@@ -58,12 +67,12 @@ export default class NavBar extends React.Component {
                       <NavLink href="/requests/">Verification Requests</NavLink>
                     </NavItem>
                   </DropdownItem>
-                  {/* <DropdownItem divider />
+                  <DropdownItem divider />
                   <DropdownItem>
                     Reset
-                  </DropdownItem> */}
+                  </DropdownItem>
                 </DropdownMenu>
-              </UncontrolledDropdown>
+              </UncontrolledDropdown> */}
             </Nav>
           </Collapse>
         </Navbar>

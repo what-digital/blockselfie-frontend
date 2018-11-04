@@ -3,6 +3,7 @@ import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import QrReader from "react-qr-reader";
 import {getFromLS, saveToLS} from "../../utils/client";
 import {NotificationManager} from 'react-notifications';
+import {wallet} from '@cityofzion/neon-js';
 var FontAwesome = require('react-fontawesome');
 var QRCode = require('qrcode.react');
 
@@ -33,8 +34,12 @@ export default class WifLoader extends React.Component {
 
   submitWif = (e) => {
     e.preventDefault();
-    console.log("submit wif loader", this.state.wif);
-    saveToLS('user', 'wif', this.state.wif);
+    console.log("submit wif loader", this.state.wif, getFromLS('userWif', 'value'));
+    const account = new wallet.Account(getFromLS('userWif', 'value'));
+    const {address} = account;
+    console.log('address: ', address, account);
+    saveToLS('userWif', 'value', this.state.wif);
+    saveToLS('userAddress', 'value', address);
     NotificationManager.success('Success message', 'You WIF has been saved');
     this.props.onSubmit && this.props.onSubmit(this.state.wif);
   }
@@ -44,9 +49,9 @@ export default class WifLoader extends React.Component {
       <div className="stepContainer text-center">
         <div className="col-12 px-0">
           <h2 className="mb-2">Your NEO Wallet address: </h2>
-          <p>{getFromLS('user', 'wif')}</p>
+          <p>{getFromLS('userAddress', 'value')}</p>
           <div className="col-12 px-0">
-            <QRCode value={getFromLS('user', 'wif')} size={330}/>
+            <QRCode value={getFromLS('userWif', 'value')} size={330}/>
           </div>
         </div>
 {/* {        <div className="col-12 mt-2">
@@ -66,9 +71,9 @@ export default class WifLoader extends React.Component {
                    style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
                  />
              </button>
-             <Input type="text" name="WIF" id="wif" placeholder="WIF" value={this.state.scannerResult || this.state.wif} onChange={(e) => this.setState({wif: e.target.value})} />
+             <Input type="text" name="WIF" id="wif" placeholder="WIF" value={this.state.wif} onChange={(e) => this.setState({wif: e.target.value})} />
            </FormGroup>
-           <Button type="submit">Submit</Button>
+           <Button type="submit" outline color="success">Submit</Button>
          </form>
          {this.state.scanner && <QrReader
             delay={this.state.delay}
@@ -76,7 +81,7 @@ export default class WifLoader extends React.Component {
             onScan={this.handleScan}
             className="qrCodeScanner"
           />}
-        {this.state.scanner && <button role="button" onClick={() => this.setState({scanner: false})} className="closeButton">CLOSE SCANNER</button>}
+        {this.state.scanner && <button role="button" onClick={() => this.setState({scanner: false})} className="closeButton fixed white">CLOSE SCANNER</button>}
       </div>
     )
   }
