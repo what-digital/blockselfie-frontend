@@ -63,7 +63,7 @@ class Lookup extends Component {
            </button>
            <Input type="text" name="neoAddress" id="neoAddress" placeholder="NEO Address" value={this.state.scannerResult || this.state.wif} onChange={(e) => this.setState({wif: e.target.value})}/>
          </FormGroup>
-         <Button type="submit">Submit</Button>
+         <Button  outline color="success" type="submit">Submit</Button>
        </form>
        {this.state.scanner && <QrReader
           delay={this.state.delay}
@@ -71,7 +71,7 @@ class Lookup extends Component {
           onScan={this.handleScan}
           className="qrCodeScanner"
         />}
-        {this.state.scanner && <button role="button" onClick={() => this.setState({scanner: false})} className="closeButton">CLOSE SCANNER</button>}
+        {this.state.scanner && <button role="button" onClick={() => this.setState({scanner: false})} className="closeButton fixed white">CLOSE SCANNER</button>}
       </div>
     );
   }

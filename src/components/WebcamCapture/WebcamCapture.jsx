@@ -32,7 +32,7 @@ export default class WebcamCapture extends React.Component {
           style={{  position: 'fixed', left: 0, top: 0, backgroundColor: 'black'}}
           videoConstraints={videoConstraints}
         />
-        <button onClick={this.capture} className="closeButton">Capture photo</button>
+          <button onClick={this.capture} className="closeButton fixed white" style={{bottom: '100px', height: '40px', top: 'auto'}}>Capture photo</button>
       </div>
     );
   }

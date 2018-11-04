@@ -34,8 +34,8 @@ class VerificationFlow extends Component {
         <div className="col-12 mb-4">
           My QR Code:
         </div>
-        <div className="col-12">
-          <QRCode value={getFromLS('user', 'wif')} size='360'/>
+        <div className="col-12 px-0">
+          <QRCode value={getFromLS('user', 'wif')} size={330}/>
         </div>
       </div>
     )
