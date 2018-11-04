@@ -1,9 +1,7 @@
-// import "./ToDoList.css";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import _ from "lodash";
 import * as actions from "../../actions";
-import ToDoListItem from "../../components/ToDoListItem";
 import Loading from "../../components/Loading";
 import {getFromLS, saveToLS} from "../../utils/client";
 import { NavLink } from 'reactstrap';
@@ -35,7 +33,7 @@ class VerificationFlow extends Component {
           My QR Code:
         </div>
         <div className="col-12 px-0">
-          <QRCode value={getFromLS('user', 'wif')} size={330}/>
+          <QRCode value={getFromLS('userWif', 'value')} size={330}/>
         </div>
       </div>
     )
@@ -43,7 +41,7 @@ class VerificationFlow extends Component {
 
   renderSteps(step) {
     if (step === 0) {
-      return getFromLS('user', 'wif') ? this.renderStep0() : <NavLink href="/wif-loader/">Enter your WIF first</NavLink>
+      return getFromLS('userWif', 'value') ? this.renderStep0() : <NavLink href="/wif-loader/">Enter your WIF first</NavLink>
     }
   }
 

@@ -1,72 +1,94 @@
 import Neon from '@cityofzion/neon-js';
-import * as neon from '@cityofzion/neon-js';
-import {tx, rpc, api, u, sc, wallet} from '@cityofzion/neon-js';
+import {rpc, api, u, sc, wallet} from '@cityofzion/neon-js';
 import {todosRef} from "../../config/firebase";
-import {FETCH_TODOS} from "../todo/types";
 import {DECODE_WIF} from "./types";
 
+console.log(new wallet.Account('L3QGJ5FMg7LQWYkVekkwRDyYL3HXTw3ntYrTupjp3EViru7kTGN7').address)
 
-const net = 'http://neo-privnet.what.digital:30336';
-const neoscan = 'http://neo-privnet.what.digital';
-const scriptHash = '5c723121a650400b4e3084103e3b0642fab3e063';
-const WIF = 'L3QGJ5FMg7LQWYkVekkwRDyYL3HXTw3ntYrTupjp3EViru7kTGN7';
-const account = new wallet.Account(WIF);
-const publicKey = '02cd1ec4298c2739095d48859eeba539de31b39f630821005973c1d86b4287a324';
+// const config = {
+//   net: new api.neoscan.instance("TestNet"),
+//   script: Neon.create.script({
+//     scriptHash: "5c723121a650400b4e3084103e3b0642fab3e063",
+//     operation: "get_requests_for_target_address",
+//     args: [u.reverseHex('414c4131655965504d694e56666948765147566e757044466d6a6f504677536f5563')]
+//   }),
+//   // account: new wallet.Account(privateKey),
+//   // gas: 1
+// };
 
+// Neon.doInvoke(config).then(res => {
+//   console.log(res);
+// }).catch(console.log);
 
-const param1 = Neon.create.contractParam("String", "set_owner");
-// This is a convenient way to convert an address to a reversed scriptHash that smart contracts use.
+// let config = {
+//   name: 'PrivateNet',
+//   extra: {
+//     neoscan: 'http://localhost:4000/api/main_net'
+//   }``
+// }
+// const privateNet = new rpc.Network(config)
+// Neon.add.network(privateNet)
+//
 const param2 = sc.ContractParam.byteArray(
-  "AVf4UGKevVrMR1j3UkPsuoYKSC4ocoAkKx",
+  "ALA1eYePMiNVfiHvQGVnupDFmjoPFwSoUc",
   "address"
 );
-const invoke = {
-  useTailCall: true,
-  scriptHash: '6739aef754964ea9dba65761b16acb8e6efdfcd0',
-  operation: "set_owner",
-  args: [sc.ContractParam.string("NOPE MARIO NOPE")]
-};
 
-const sb = Neon.create.scriptBuilder();
-sb.emitAppCall(invoke.scriptHash, invoke.operation, invoke.args, false);
-console.log(sb.str, 43232432)
-// Returns a hexstring
-const script = Neon.create.script({
-  args: [sc.ContractParam.string("NOPE MARIO NOPE1")],
-  useTailCall: true,
-  scriptHash: '6739aef754964ea9dba65761b16acb8e6efdfcd0',
-  operation: "set_owner",
+rpc.Query.invoke(
+  '9639e60a66ec024a4b32503d3078ca4b1bed5310',
+  Neon.create.contractParam("String", "get_requests_for_target_address"),
+  sc.ContractParam.array(param2)
+).execute('http://neo-privnet.what.digital:30336').then(res => {
+  console.log(res);
 });
 
-let invokeTx = Neon.create.invocationTx();
-invokeTx.script = sb.str;
-console.log(script, 13123312)
-console.log(invokeTx)
-// invokeTx.attributes.push()
+// rpc.Query.invokeFunction(
+//   '5c723121a650400b4e3084103e3b0642fab3e063',
+//   ["get_requests_for_target_address", 'ALA1eYePMiNVfiHvQGVnupDFmjoPFwSoUc']
+// ).execute('http://neo-privnet.what.digital:30336').then(res => {
+//   console.log(res);
+// });
 
-const signedTx = invokeTx.sign(WIF);
-const params = sb.toScriptParams();
-const hexTx = signedTx.serialize();
-
+// const props = {
+//   scriptHash: '5b7074e873973a6ed3708862f219a6fbf4d1c411', // Scripthash for the contract
+//   operation: 'balanceOf', // name of operation to perform.
+//   args: ['AK2nJJpJr6o664CWJKi1QRXjqeic2zRp8y'] // any optional arguments to pass in. If null, use empty array.
+// }
 //
-rpc.queryRPC('http://neo-privnet.what.digital:30336', {
-  method: 'sendrawtransaction',
-  params: [hexTx],
-  // id: 1
-
-}).then(() => rpc.Query.invokeFunction(
-  '6739aef754964ea9dba65761b16acb8e6efdfcd0',
-  "get_owner",
-  // sc.ContractParam.array(param2)
-).execute(net))
-
+// const script = Neon.create.script(props)
+// rpc.Query.invokeScript(script).execute('http://neo-privnet.what.digital:30336').then(console.log)
 
 export const getName = () => {
+  // const config = {
+  //   net: new api.neoscan.instance("TestNet"),
+  //   script: Neon.create.script({
+  //     scriptHash: "5b7074e873973a6ed3708862f219a6fbf4d1c411",
+  //     operation: "balanceOf",
+  //     args: [Neon.u.reverseHex("cef0c0fdcfe7838eff6ff104f9cdec2922297537")]
+  //   }),
+  //   account: new wallet.Account(privateKey),
+  //   gas: 1
+  // };
 }
 
-
-// // TRANSACTION SEND
-
+// const privateKey = 'L3QGJ5FMg7LQWYkVekkwRDyYL3HXTw3ntYrTupjp3EViru7kTGN7'
+//  config = {
+//   net: new api.neoscan.instance("PrivateNet"),
+//   script: Neon.create.script({
+//     scriptHash: "5b7074e873973a6ed3708862f219a6fbf4d1c411",
+//     operation: "create_verification_request",
+//     args: [
+//       Neon.u.reverseHex("414c4131655965504d694e56666948765147566e757044466d6a6f504677536f5563"),
+//       Neon.u.reverseHex("414b326e4a4a704a72366f36363443574a4b69315152586a71656963327a52703879")
+//     ]
+//   }),
+//   account: new wallet.Account(privateKey),
+//   gas: 1
+// };
+//
+// Neon.doInvoke(config).then(res => {
+//   console.log(res);
+// });
 
 export const decodeWIF = wif => async dispatch => {
   const account = wallet.Account(wif);

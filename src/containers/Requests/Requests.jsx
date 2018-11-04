@@ -3,10 +3,15 @@ import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import _ from "lodash";
-import * as actions from "../../actions";
+import * as actions from "../../actions/firebase";
 import QrReader from "react-qr-reader";
+import {NotificationManager} from 'react-notifications';
 import WebcamCapture from "../../components/WebcamCapture/WebcamCapture";
+import GeoLocator from "../../components/GeoLocator/GeoLocator";
 
+import {getFromLS, saveToLS} from "../../utils/client";
+
+var MD5 = require("crypto-js/md5");
 var FontAwesome = require('react-fontawesome');
 
 const addressLength = 32;
@@ -21,6 +26,7 @@ class Requests extends Component {
       step: 0,
       camera: false,
       scanner: false,
+      sourceWif: null,
     };
   }
 
@@ -49,7 +55,7 @@ class Requests extends Component {
     sendWif({'wif': e.currentTarget[0].value});
   }
 
-  renderRow() {
+  renderRow(wif) {
     return (
       <div className="table-row bordered">
         <div className="wrapper">
@@ -61,12 +67,12 @@ class Requests extends Component {
         </div>
         <div className="wrapper group">
           <div className="group grey">
-            fdghjkhgfd
+            {wif}
           </div>
         </div>
-        <div className="wrappe">
+        <div className="wrapper">
           <div className="group">
-            <Button onClick={() => this.setState({step: 1})} outline color="success" type="button">Accept</Button>
+            <Button onClick={() => this.setState({step: 1, sourceWif: wif})} outline color="success" type="button">Accept</Button>
           </div>
         </div>
       </div>
@@ -102,23 +108,41 @@ class Requests extends Component {
   }
 
   goToStep2 = (image) => {
-    this.setState({step: 2, imageSrc: image});
+    this.setState({step: 2, imageSrc: image, imageHash: MD5(image).toString()});
 
     this.props.history.push({
       search: '?step=2',
     })
   }
 
-  submitHash() {
-    console.log('submiImage', this.state.imageSrc);
+  submitImage = () => {
+    const { addImage } = this.props;
+
+    console.log('SHA: ', );
+    console.log('renderHeader', this.props.coords && this.props.coords.latitude);
+    addImage(this.state.imageHash, this.state.imageSrc, this.props.coords.latitude, this.props.coords.longitude).then((res) => {NotificationManager.success('Success message', 'You have verified')});
+    fetch('http://sc-be.what.digital/confirm-verification-request', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({"wif": this.state.sourceWif, "image_hash": this.state.imageHash ,"target_address": getFromLS('userAddress', 'value')})
+    }).then(res=>res.json())
+      .then(res => console.log(res));
   }
 
   renderSteps(step) {
     if (step === 0) {
+
       return (
         <div className="content col-12">
-          Incoming Verification Requests
-          {this.renderRow()}
+          <h2 className="">
+            Incoming Verification Requests
+          </h2>
+          {this.renderRow('hash1')}
+          {this.renderRow('hash2')}
+          {this.renderRow('hash3')}
+          {this.renderRow('hash4')}
         </div>
       )
     } else if (step === 1) {
@@ -129,11 +153,11 @@ class Requests extends Component {
         </div>
       )
     } else if (step === 2) {
-      return (<div className="content col-12 text-center">
+      return (<div className="content col-12 text-center d-block">
         <h1>
           Complete Verification Process
         </h1>
-        <div className="col-12">Image hash:</div>
+        <div className="col-12">Image hash: {this.state.imageHash}</div>
         <img src={this.state.imageSrc} style={{width: '200px'}}/>
         <Button type="button" onClick={this.submitImage} outline color="success" className="mt-2 d-block mx-auto">Submit</Button>
       </div>)

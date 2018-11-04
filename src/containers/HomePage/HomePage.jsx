@@ -1,9 +1,7 @@
-// import "./ToDoList.css";
+import "../../App.scss";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import _ from "lodash";
-// import * as actions from "../../actions";
-import ToDoListItem from "../../components/ToDoListItem";
 import { getName } from "../../actions/neo/index";
 
 class HomePage extends Component {
@@ -20,8 +18,10 @@ class HomePage extends Component {
 
   render() {
     return (
-      <div className="to-do-list-container text-center">
-        Block chain verified identities
+      <div className="homepageContainer text-center">
+        <h2 className="">
+          Block chain verified identities
+        </h2>
       </div>
     );
   }
