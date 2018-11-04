@@ -1,5 +1,5 @@
 import "../../App.scss";
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, Input, FormGroup } from 'reactstrap';
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import _ from "lodash";
@@ -51,8 +51,9 @@ class Lookup extends Component {
     return (
       <div className="content">
       <form onSubmit={(e) => this.submitWif(e)} style={{textAlign: 'center'}}>
+        <h2 className="">Confirm Identity</h2>
          <FormGroup>
-           <Label for="wif">Confirm Identity</Label>
+           {/* <Label for="wif">Confirm Identity</Label> */}
            <button role="button" className="qrCodeButton" title="Use QRCode Scaner" onClick={() => this.setState({scanner: !this.state.scanner})}>
                <FontAwesome
                  className='qrcode'

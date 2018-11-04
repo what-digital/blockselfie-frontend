@@ -56,7 +56,7 @@ class GetVerified extends Component {
     return (
       <div className="stepContainer text-center">
         <div className="col-12 px-0">
-          <h2 className="mb-2">Addres of the verifying Person: </h2>
+          <h2 className="">Address of the verifying Person: </h2>
         </div>
         <WifLoader onSubmit={this.initiateVerification} verifier/>
       </div>
@@ -67,8 +67,8 @@ class GetVerified extends Component {
     return (
       <div className="stepContainer text-center">
         <div className="col-12 px-0">
-          <h2 className="mb-2">Your NEO Wallet address: </h2>
-          <p>{getFromLS('userAddress', 'value')}</p>
+          <h2 className="">Your NEO Wallet address: </h2>
+          <p classname="py-2">{getFromLS('userAddress', 'value')}</p>
           <div className="col-12 px-0">
             <QRCode value={getFromLS('userWif', 'value')} size={330}/>
           </div>
@@ -84,7 +84,7 @@ class GetVerified extends Component {
     return (
       <div className="stepContainer text-center">
         <div className="col-12 px-0">
-          <h2 className="mb-2">Your query was sent</h2>
+          <h2 className="">You will be notified once you get verified</h2>
         </div>
       </div>
     )

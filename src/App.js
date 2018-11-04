@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./App.scss";
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import ToDoList from "./containers/ToDoList/ToDoList";
 import VerificationFlow from "./containers/VerificationFlow/VerificationFlow";
 import HomePage from "./containers/HomePage/HomePage";
 import NavBar from "./components/NavBar/NavBar";
@@ -26,7 +25,6 @@ class App extends Component {
           <Router>
             <div className="container-fluid main-container">
               <Route exact path="/" component={HomePage} />
-              <Route exact path="/todo" component={ToDoList} />
               <Route exact path="/verify" component={VerificationFlow} />
               <Route exact path="/timeline" component={Timeline} />
               <Route exact path="/lookup" component={Lookup} />

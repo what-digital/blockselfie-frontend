@@ -32,7 +32,8 @@ export default class NavBar extends React.Component {
     return (
       <div className="w-100">
         <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">BlockSelfie App</NavbarBrand>
+          <NavbarBrand href="/"><img className="h-100" src="/assets/images/logo.png" />
+        </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar >

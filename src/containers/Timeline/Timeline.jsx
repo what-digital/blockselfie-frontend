@@ -6,6 +6,7 @@ import _ from "lodash";
 import * as actions from "../../actions/firebase";
 import QrReader from "react-qr-reader";
 import WebcamCapture from "../../components/WebcamCapture/WebcamCapture";
+import Loading from "../../components/Loading";
 import {getFromLS, saveToLS, parseTimestamp, parseDate} from "../../utils/client";
 
 
@@ -23,6 +24,7 @@ class Timeline extends Component {
       step: 0,
       camera: false,
       scanner: false,
+      loading: true
     };
   }
 
@@ -36,8 +38,8 @@ class Timeline extends Component {
         <div className="wrapper">
           <div className="">
             <img src={image.base64} style={{width: '200px'}} className="mb-2"/>
-            <p>{parseTimestamp(image.timestamp)}</p>
-            <p>Location: {image.latitude + ' ' + image.longitude}</p>
+            <p><b>Date:</b> {parseTimestamp(image.timestamp)}</p>
+            <p><b>Location:</b> {image.latitude.toLocaleString() + ' ' + image.longitude.toLocaleString()}</p>
           </div>
         </div>
       </div>
@@ -46,50 +48,22 @@ class Timeline extends Component {
 
   componentWillReceiveProps(nextProps) {
     console.log('nextProps.history', nextProps.history.location.search);
-  }
-
-  goToStep2 = (image) => {
-    this.setState({step: 2, imageSrc: image});
-
-    this.props.history.push({
-      search: '?step=2',
-    })
-  }
-
-  renderSteps(step) {
-    if (step === 0) {
-      return (
-        <div className="content col-12">
-          <h2 className="mb-2">Your Timeline</h2>
-          {this.props.data && Object.keys(this.props.data).map((key, idx) => {
-            return this.renderRow(this.props.data[key], idx)
-          })
-            }
-        </div>
-      )
-    } else if (step === 1) {
-      return (
-        <div className="content col-12 d-flex justify-content-center">
-          {!this.state.camera && <Button outline color="success"  onClick={() => this.setState({camera: true})} className="closeButton">Take Selfie</Button>}
-          {this.state.camera && <WebcamCapture closeCamera={() => this.setState({camera: false})} photoTaken={(image) => this.goToStep2(image)} />}
-        </div>
-      )
-    } else if (step === 2) {
-      return (<div className="content col-12 text-center">
-        <h1>
-          Complete Verification Process
-        </h1>
-        <div className="col-12">Image hash:</div>
-        <img src={this.state.imageSrc} style={{width: '200px'}}/>
-        <Button type="button" onClick={this.submitImage} outline color="success" className="mt-2 d-block mx-auto">Submit</Button>
-      </div>)
+    if (nextProps.data !== this.props.data) {
+      this.setState({loading: false});
     }
   }
-
+  
   render() {
     const { step } = this.state;
     return (
-      this.renderSteps(step)
+      <div className="content col-12 d-block">
+        <h2 className="">Your Timeline</h2>
+        {this.state.loading && <Loading text="Fetching selfies" backdrop fixed/>}
+        {this.props.data && Object.keys(this.props.data).map((key, idx) => {
+          return this.renderRow(this.props.data[key], idx)
+        })
+          }
+      </div>
     );
   }
 }

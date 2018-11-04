@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import QrReader from "react-qr-reader";
 import {getFromLS, saveToLS} from "../../utils/client";
 import {NotificationManager} from 'react-notifications';

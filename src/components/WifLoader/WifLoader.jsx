@@ -14,7 +14,7 @@ export default class WifLoader extends React.Component {
       scannerResult: null,
       wif: this.props.wif,
       scanner: false,
-      address: null
+      address: ''
     };
   }
 
@@ -58,13 +58,13 @@ export default class WifLoader extends React.Component {
     return this.props.wif ? (
       <div className="stepContainer text-center">
         <div className="col-12 px-0">
-          <h2 className="mb-2">Your NEO Wallet address: </h2>
-          <p>{getFromLS('userAddress', 'value')}</p>
+          <h2 className="">Your NEO Wallet address: </h2>
+          <p className="py-2">{getFromLS('userAddress', 'value')}</p>
           <div className="col-12 px-0">
             <QRCode value={getFromLS('userWif', 'value')} size={330}/>
           </div>
         </div>
-{/* {<div className="col-12 mt-2">
+        {/* {<div className="col-12 mt-2">
           <Button type="button">Start Verification</Button>
         </div>} */}
       </div>
@@ -73,7 +73,7 @@ export default class WifLoader extends React.Component {
       <div className="stepContainer text-center">
         <form onSubmit={(e) => this.submitVerifierWif(e)} style={{textAlign: 'center'}}>
            <FormGroup>
-             <Label for="wif">Verifiers address</Label>
+             {/* <Label for="wif">Address</Label> */}
              <button type="button" className="qrCodeButton" title="Use QRCode Scaner" onClick={() => this.setState({scanner: !this.state.scanner})}>
                  <FontAwesome
                    className='qrcode'
@@ -82,7 +82,7 @@ export default class WifLoader extends React.Component {
                    style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
                  />
              </button>
-             <Input type="text" name="WIF" id="wif" placeholder="WIF" value={this.state.address} onChange={(e) => this.setState({address: e.target.value})} />
+             <Input type="text" name="WIF" id="wif" placeholder="Address" value={this.state.address} onChange={(e) => this.setState({address: e.target.value})} />
            </FormGroup>
            <Button type="submit" outline color="success">Submit</Button>
          </form>
@@ -96,8 +96,9 @@ export default class WifLoader extends React.Component {
       </div>
       : <div className="stepContainer text-center">
         <form onSubmit={(e) => this.submitWif(e)} style={{textAlign: 'center'}}>
+          <h2 className="">Enter Your WIF</h2>
            <FormGroup>
-             <Label for="wif">Enter Your WIF</Label>
+             {/* <Label for="wif">Enter Your WIF</Label> */}
              <button type="button" className="qrCodeButton" title="Use QRCode Scaner" onClick={() => this.setState({scanner: !this.state.scanner})}>
                  <FontAwesome
                    className='qrcode'

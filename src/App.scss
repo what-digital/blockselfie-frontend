@@ -9,9 +9,20 @@ p {
   margin-bottom: 0;
 }
 
+h2 {
+  text-align: center;
+  margin: 20px auto;
+}
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
+}
+
+.navbar-brand {
+  display: inline-block;
+  width: calc(100% - 72px);
+  height: 70px;
 }
 
 .App-header {
@@ -42,16 +53,21 @@ p {
   flex: 1;
   height: auto;
   display: flex;
-  align-items: center;
+  // align-items: center;
   justify-content: center;
+  padding-top: 85px;
 }
 
 .content {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .stepContainer {
   width: 100%;
+  align-self: center;
 }
 
 .closeButton {
@@ -63,7 +79,7 @@ p {
 
   &.fixed {
     left: 0;
-    top: 70px;
+    top: 100px;
     right: 0;
     position: fixed;
   }
@@ -73,10 +89,16 @@ p {
   }
 }
 
+.homepageContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .qrCodeButton {
   position: absolute;
   right: 1px;
-  top: 32px;
+  top: 0px;
   height: 38px;
 }
 
@@ -85,7 +107,7 @@ p {
   position: fixed;
   left: 0px;
   right: 0;
-  top: 0;
+  top: 30px;
   /* bottom: 0; */
   height: 100vh;
   display: block;
@@ -99,6 +121,9 @@ p {
 
 .navbar {
   z-index: 10;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 .icon-global {
@@ -124,6 +149,10 @@ $margin: 30px;
       line-height: 2.2rem;
       // padding-left: 15px;
       // padding-right: 15px;
+
+      &.bordered {
+        margin-bottom: 15px;
+      }
   }
 
   // Wrappers around cells and other wrappers: flex, row

@@ -1,7 +1,6 @@
 import Neon from '@cityofzion/neon-js';
 import {rpc, api, u, sc, wallet} from '@cityofzion/neon-js';
 import {todosRef} from "../../config/firebase";
-import {FETCH_TODOS} from "../todo/types";
 import {DECODE_WIF} from "./types";
 
 console.log(new wallet.Account('L3QGJ5FMg7LQWYkVekkwRDyYL3HXTw3ntYrTupjp3EViru7kTGN7').address)
@@ -25,7 +24,7 @@ console.log(new wallet.Account('L3QGJ5FMg7LQWYkVekkwRDyYL3HXTw3ntYrTupjp3EViru7k
 //   name: 'PrivateNet',
 //   extra: {
 //     neoscan: 'http://localhost:4000/api/main_net'
-//   }
+//   }``
 // }
 // const privateNet = new rpc.Network(config)
 // Neon.add.network(privateNet)

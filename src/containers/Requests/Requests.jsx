@@ -136,8 +136,13 @@ class Requests extends Component {
 
       return (
         <div className="content col-12">
-          Incoming Verification Requests
-          {this.renderRow('ssdfghjgfd')}
+          <h2 className="">
+            Incoming Verification Requests
+          </h2>
+          {this.renderRow('hash1')}
+          {this.renderRow('hash2')}
+          {this.renderRow('hash3')}
+          {this.renderRow('hash4')}
         </div>
       )
     } else if (step === 1) {
@@ -148,7 +153,7 @@ class Requests extends Component {
         </div>
       )
     } else if (step === 2) {
-      return (<div className="content col-12 text-center">
+      return (<div className="content col-12 text-center d-block">
         <h1>
           Complete Verification Process
         </h1>
