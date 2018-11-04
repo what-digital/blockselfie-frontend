@@ -2,12 +2,10 @@ import "../../App.scss";
 import { Button, Input, FormGroup } from 'reactstrap';
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import _ from "lodash";
 import * as actions from "../../actions";
 import QrReader from "react-qr-reader";
 var FontAwesome = require('react-fontawesome');
 
-const addressLength = 32;
 
 class Lookup extends Component {
   constructor(props) {
@@ -16,7 +14,6 @@ class Lookup extends Component {
       delay: 300,
       wif: "",
       scannerResult: "",
-      step: 0,
       scanner: false,
     };
   }
@@ -26,6 +23,7 @@ class Lookup extends Component {
     if (data) {
       this.setState({
         scannerResult: data,
+        wif: data,
         scanner: false
       });
     }
@@ -47,11 +45,10 @@ class Lookup extends Component {
   }
 
   render() {
-    const { step } = this.state;
     return (
       <div className="content">
       <form onSubmit={(e) => this.submitWif(e)} style={{textAlign: 'center'}}>
-        <h2 className="">Confirm Identity</h2>
+        <h2 className="">Lookup</h2>
          <FormGroup>
            {/* <Label for="wif">Confirm Identity</Label> */}
            <button role="button" className="qrCodeButton" title="Use QRCode Scaner" onClick={() => this.setState({scanner: !this.state.scanner})}>
@@ -62,7 +59,7 @@ class Lookup extends Component {
                  style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
                />
            </button>
-           <Input type="text" name="neoAddress" id="neoAddress" placeholder="NEO Address" value={this.state.scannerResult || this.state.wif} onChange={(e) => this.setState({wif: e.target.value})}/>
+           <Input type="text" name="neoAddress" id="neoAddress" placeholder="NEO Address" value={this.state.wif} onChange={(e) => this.setState({wif: e.target.value})}/>
          </FormGroup>
          <Button  outline color="success" type="submit">Submit</Button>
        </form>

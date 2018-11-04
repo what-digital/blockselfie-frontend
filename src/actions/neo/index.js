@@ -1,9 +1,8 @@
-import Neon from '@cityofzion/neon-js';
-import {rpc, api, u, sc, wallet} from '@cityofzion/neon-js';
-import {todosRef} from "../../config/firebase";
-import {DECODE_WIF} from "./types";
+// import Neon from '@cityofzion/neon-js';
+// import {rpc, api, u, sc, wallet} from '@cityofzion/neon-js';
+// import {DECODE_WIF} from "./types";
 
-console.log(new wallet.Account('L3QGJ5FMg7LQWYkVekkwRDyYL3HXTw3ntYrTupjp3EViru7kTGN7').address)
+// console.log(new wallet.Account('L3QGJ5FMg7LQWYkVekkwRDyYL3HXTw3ntYrTupjp3EViru7kTGN7').address)
 
 // const config = {
 //   net: new api.neoscan.instance("TestNet"),
@@ -29,18 +28,18 @@ console.log(new wallet.Account('L3QGJ5FMg7LQWYkVekkwRDyYL3HXTw3ntYrTupjp3EViru7k
 // const privateNet = new rpc.Network(config)
 // Neon.add.network(privateNet)
 //
-const param2 = sc.ContractParam.byteArray(
-  "ALA1eYePMiNVfiHvQGVnupDFmjoPFwSoUc",
-  "address"
-);
-
-rpc.Query.invoke(
-  '9639e60a66ec024a4b32503d3078ca4b1bed5310',
-  Neon.create.contractParam("String", "get_requests_for_target_address"),
-  sc.ContractParam.array(param2)
-).execute('http://neo-privnet.what.digital:30336').then(res => {
-  console.log(res);
-});
+// const param2 = sc.ContractParam.byteArray(
+//   "ALA1eYePMiNVfiHvQGVnupDFmjoPFwSoUc",
+//   "address"
+// );
+//
+// rpc.Query.invoke(
+//   '9639e60a66ec024a4b32503d3078ca4b1bed5310',
+//   Neon.create.contractParam("String", "get_requests_for_target_address"),
+//   sc.ContractParam.array(param2)
+// ).execute('http://neo-privnet.what.digital:30336').then(res => {
+//   console.log(res);
+// });
 
 // rpc.Query.invokeFunction(
 //   '5c723121a650400b4e3084103e3b0642fab3e063',
@@ -58,7 +57,7 @@ rpc.Query.invoke(
 // const script = Neon.create.script(props)
 // rpc.Query.invokeScript(script).execute('http://neo-privnet.what.digital:30336').then(console.log)
 
-export const getName = () => {
+// export const getName = () => {
   // const config = {
   //   net: new api.neoscan.instance("TestNet"),
   //   script: Neon.create.script({
@@ -69,7 +68,7 @@ export const getName = () => {
   //   account: new wallet.Account(privateKey),
   //   gas: 1
   // };
-}
+// }
 
 // const privateKey = 'L3QGJ5FMg7LQWYkVekkwRDyYL3HXTw3ntYrTupjp3EViru7kTGN7'
 //  config = {
@@ -90,10 +89,10 @@ export const getName = () => {
 //   console.log(res);
 // });
 
-export const decodeWIF = wif => async dispatch => {
-  const account = wallet.Account(wif);
-  dispatch({
-    type: DECODE_WIF,
-    payload: account.address
-  })
-};
+// export const decodeWIF = wif => async dispatch => {
+//   const account = wallet.Account(wif);
+//   dispatch({
+//     type: DECODE_WIF,
+//     payload: account.address
+//   })
+// };

@@ -58,6 +58,10 @@ h2 {
   padding-top: 85px;
 }
 
+.notification-container {
+  top: 95px !important;
+}
+
 .content {
   width: 100%;
   display: flex;
@@ -157,6 +161,7 @@ $margin: 30px;
 
   // Wrappers around cells and other wrappers: flex, row
   .wrapper {
+    justify-content: space-around;
     display: flex;           display: -webkit-flex;
     flex-direction: row;     -webkit-flex-direction: row;
     flex-grow: 1;            -webkit-flex-grow: 1;
@@ -177,7 +182,7 @@ $margin: 30px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    padding-left: 15px;
+    // padding-left: 15px;
   }
 
   // Fix the minimum width of the leaf level cells

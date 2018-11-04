@@ -1,14 +1,13 @@
 import "../../App.scss";
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button } from 'reactstrap';
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import _ from "lodash";
+// import _ from "lodash";
 import * as actions from "../../actions";
-import {getFromLS, saveToLS} from "../../utils/client";
+import {getFromLS} from "../../utils/client";
 import WifLoader from "../../components/WifLoader/WifLoader";
 var QRCode = require('qrcode.react');
 
-const addressLength = 32;
 
 class GetVerified extends Component {
   constructor(props) {
@@ -35,7 +34,7 @@ class GetVerified extends Component {
 
   initiateVerification = (address) => {
     console.log('initiateVerification', address, JSON.stringify({"wif": getFromLS('userWif', 'value') ,"source_address": address}));
-    fetch('http://sc-be.what.digital/create-verification-request', {
+    fetch('https://blockselfie-backend.what.digital/api/create-verification-request', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json'

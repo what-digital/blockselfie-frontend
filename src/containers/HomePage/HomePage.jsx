@@ -11,16 +11,19 @@ class HomePage extends Component {
   };
 
   componentWillMount() {
-    getName();
-    console.log('WAT?')
+    // getName();
+    // console.log('WAT?')
     // this.props.fetchToDos();
   }
 
   render() {
     return (
       <div className="homepageContainer text-center">
+        <img className="" style={{
+          width: '50%', margin: '0 auto'
+        }} src="/assets/images/logo2.png" />
         <h2 className="">
-          Block chain verified identities
+         Keep it real
         </h2>
       </div>
     );

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.scss";
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import VerificationFlow from "./containers/VerificationFlow/VerificationFlow";
 import HomePage from "./containers/HomePage/HomePage";
 import NavBar from "./components/NavBar/NavBar";
@@ -10,7 +10,7 @@ import Requests from "./containers/Requests/Requests";
 import Timeline from "./containers/Timeline/Timeline";
 import GetVerified from "./containers/GetVerified/GetVerified";
 import {NotificationContainer} from 'react-notifications';
-import {getFromLS, saveToLS} from "./utils/client";
+import {getFromLS} from "./utils/client";
 import {geolocated} from 'react-geolocated';
 
 import 'react-notifications/lib/notifications.css';

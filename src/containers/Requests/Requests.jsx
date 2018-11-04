@@ -1,20 +1,15 @@
 import "../../App.scss";
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button } from 'reactstrap';
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import _ from "lodash";
 import * as actions from "../../actions/firebase";
-import QrReader from "react-qr-reader";
 import {NotificationManager} from 'react-notifications';
 import WebcamCapture from "../../components/WebcamCapture/WebcamCapture";
-import GeoLocator from "../../components/GeoLocator/GeoLocator";
 
-import {getFromLS, saveToLS} from "../../utils/client";
+import {getFromLS} from "../../utils/client";
 
 var MD5 = require("crypto-js/md5");
-var FontAwesome = require('react-fontawesome');
 
-const addressLength = 32;
 
 class Requests extends Component {
   constructor(props) {
@@ -71,9 +66,7 @@ class Requests extends Component {
           </div>
         </div>
         <div className="wrapper">
-          <div className="group">
-            <Button onClick={() => this.setState({step: 1, sourceWif: wif})} outline color="success" type="button">Accept</Button>
-          </div>
+          <Button onClick={() => this.setState({step: 1, sourceWif: wif})} outline color="success" type="button">Accept</Button>
         </div>
       </div>
     )
@@ -120,8 +113,8 @@ class Requests extends Component {
 
     console.log('SHA: ', );
     console.log('renderHeader', this.props.coords && this.props.coords.latitude);
-    addImage(this.state.imageHash, this.state.imageSrc, this.props.coords.latitude, this.props.coords.longitude).then((res) => {NotificationManager.success('Success message', 'You have verified')});
-    fetch('http://sc-be.what.digital/confirm-verification-request', {
+    addImage(this.state.imageHash, this.state.imageSrc, this.props.coords.latitude, this.props.coords.longitude).then((res) => {NotificationManager.success('Success', 'You have verified')});
+    fetch('https://blockselfie-backend.what.digital/api/confirm-verification-request', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json'
@@ -135,14 +128,14 @@ class Requests extends Component {
     if (step === 0) {
 
       return (
-        <div className="content col-12">
+        <div className="content col-12 px-0">
           <h2 className="">
             Incoming Verification Requests
           </h2>
-          {this.renderRow('hash1')}
-          {this.renderRow('hash2')}
-          {this.renderRow('hash3')}
-          {this.renderRow('hash4')}
+          {this.renderRow('L3QGJ5FMg73')}
+          {this.renderRow('LQWYkVekkw')}
+          {this.renderRow('RDyYL3HXTw')}
+          {this.renderRow('ntYrTupjN7')}
         </div>
       )
     } else if (step === 1) {
@@ -153,13 +146,15 @@ class Requests extends Component {
         </div>
       )
     } else if (step === 2) {
-      return (<div className="content col-12 text-center d-block">
-        <h1>
-          Complete Verification Process
-        </h1>
-        <div className="col-12">Image hash: {this.state.imageHash}</div>
-        <img src={this.state.imageSrc} style={{width: '200px'}}/>
-        <Button type="button" onClick={this.submitImage} outline color="success" className="mt-2 d-block mx-auto">Submit</Button>
+      return (<div className="content col-12 text-center">
+        <div>
+          <h1>
+            Complete Verification Process
+          </h1>
+          <div className="col-12">Image hash: {this.state.imageHash}</div>
+          <img alt="selfieShot" src={this.state.imageSrc} style={{width: '200px'}} className="mx-auto"/>
+          <Button type="button" onClick={this.submitImage} outline color="success" className="mt-2 d-block mx-auto">Submit</Button>
+        </div>
       </div>)
     }
   }

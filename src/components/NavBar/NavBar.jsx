@@ -7,10 +7,11 @@ import {
   Nav,
   NavItem,
   NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem } from 'reactstrap';
+  // UncontrolledDropdown,
+  // DropdownToggle,
+  // DropdownMenu,
+  // DropdownItem
+} from 'reactstrap';
 
 export default class NavBar extends React.Component {
   constructor(props) {
@@ -32,7 +33,7 @@ export default class NavBar extends React.Component {
     return (
       <div className="w-100">
         <Navbar color="light" light expand="md">
-          <NavbarBrand href="/"><img className="h-100" src="/assets/images/logo.png" />
+          <NavbarBrand href="/"><img alt="Logo" className="h-100" src="/assets/images/logo.png" />
         </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
@@ -41,16 +42,16 @@ export default class NavBar extends React.Component {
                 <NavLink href="/my-code/">My QR code</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/timeline/">My Timeline</NavLink>
+                <NavLink href="/timeline/">Timeline</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/lookup/">Lookup identity</NavLink>
+                <NavLink href="/lookup/">Lookup</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="/get-verified/">Get verified</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/requests/">Verification Requests</NavLink>
+                <NavLink href="/requests/">Requests</NavLink>
               </NavItem>
 
               {/* <UncontrolledDropdown nav inNavbar>

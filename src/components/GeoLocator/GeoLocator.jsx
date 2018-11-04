@@ -1,14 +1,8 @@
 import React from 'react';
-import QrReader from "react-qr-reader";
-import {getFromLS, saveToLS} from "../../utils/client";
-import {NotificationManager} from 'react-notifications';
-import {wallet} from '@cityofzion/neon-js';
 import {geolocated} from 'react-geolocated';
-var FontAwesome = require('react-fontawesome');
 
 class GeoLocator extends React.Component {
   constructor(props) {
-    super(props);
   }
 
   render() {
