@@ -1,0 +1,186 @@
+
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.main-container {
+  flex: 1;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeButton {
+  position: fixed;
+  z-index: 10;
+  color: white;
+  left: 0;
+  top: 70px;
+  background-color: transparent;
+  right: 0;
+  margin: auto;
+  display: block;
+  width: 150px;
+}
+
+.qrCodeButton {
+  position: absolute;
+  right: 1px;
+  top: 32px;
+  height: 38px;
+}
+
+.qrCodeScanner {
+  width: 100%;
+  position: fixed;
+  left: 0px;
+  right: 0;
+  top: 115px;
+  bottom: 0;
+  height: 100vh;
+  display: block;
+  max-width: 100vh;
+  margin: auto;
+}
+
+.icon-global {
+  width: 32px;
+  height: 32px;
+}
+
+$margin: 30px;
+  $wide-width: 50px;
+  $group-width: 80px;
+
+  /*
+   * Basic styles, good for a large display. Everything fits in
+   * one row, no wrapping. All wide based cells grow equally.
+   */
+
+  // Main container: initialize the flex, direction is row, no wrapping. width 100%
+  .table-row {
+      display: flex;          display: -webkit-flex;
+      flex-direction: row;    -webkit-flex-direction: row;
+      flex-wrap: no-wrap;     -webkit-flex-wrap: no-wrap;
+      width: 100%;
+      line-height: 2.2rem;
+      // padding-left: 15px;
+      // padding-right: 15px;
+  }
+
+  // Wrappers around cells and other wrappers: flex, row
+  .wrapper {
+    display: flex;           display: -webkit-flex;
+    flex-direction: row;     -webkit-flex-direction: row;
+    flex-grow: 1;            -webkit-flex-grow: 1;
+  }
+
+  .group-2 {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  // wide cells and wrappers: grow equally when there is extra space
+  .wide-4, .wide-2, .wide {
+    flex-grow: 1;           -webkit-flex-grow: 1;
+  }
+
+  // wide cells: truncate and show ellipsis when not enough space
+  .wide {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding-left: 15px;
+  }
+
+  // Fix the minimum width of the leaf level cells
+  .wide {
+    width: $wide-width;
+  }
+
+  .group {
+    width: $group-width;
+    text-align: center;
+  }
+
+  /*
+   * Media queries: optimize for different screen widths.
+   */
+
+  // convenience mixin for setting wrapper styles vertical
+  @mixin vertical() {
+    // Let the wrapper flex vertically, so we get 2 rows
+    flex-direction: column;     -webkit-flex-direction: column;
+    // can't have the children grow, since this means vertical growth
+    div {
+      flex-grow: 0;  -webkit-flex-grow: 0;
+      // but let them grow horizontally, 100% to fill the wrapper
+      width: 100%;
+    }
+  }
+
+  // First break: when one row does not fit, make it 2 rows
+  @media all and (max-width: ($margin*2 + $wide-width*4 + $group-width*4)) {
+    // inner wrappers vertical
+    .wide-2, .group-2 {
+      @include vertical();
+    }
+    // fix the widths of the inner level wrappers, else they take
+    // children's natural size
+    .wide-2 { width: $wide-width; }
+    .group-2  { width: $group-width;  }
+  }
+
+  // Second break: when two rows is not enough, make it four
+  @media all and (max-width: ($margin*2 + $wide-width*2 + $group-width*2)) {
+    // Outer wrappers also vertical
+    .wide-4, .group-4 {
+      @include vertical();
+    }
+    // fix widths
+    .wide-4 { width: $wide-width; }
+    .group-4  { width: $group-width;  }
+  }
+
+  // Final: collapse all of them into one single column
+  @media all and (max-width: ($margin*2 + $wide-width + $group-width)) {
+    // wrap the main row container
+    .table-row {
+      @include vertical();
+    }
+    // force the group cells to left-align to look better
+    .group {
+      text-align: left;
+    }
+  }

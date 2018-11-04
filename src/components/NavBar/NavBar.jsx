@@ -35,35 +35,35 @@ export default class NavBar extends React.Component {
           <NavbarBrand href="/">BlockSelfie App</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
+            <Nav className="ml-auto" navbar >
               <NavItem>
                 <NavLink href="/lookup/">Lookup identity</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="/get-verified/">Get verified</NavLink>
               </NavItem>
-              <NavItem>
-                <NavLink href="/verify/">Verify someone</NavLink>
-              </NavItem>
-              {
-              // <UncontrolledDropdown nav inNavbar>
-              //   <DropdownToggle nav caret>
-              //     Options
-              //   </DropdownToggle>
-              //   <DropdownMenu right>
-              //     <DropdownItem>
-              //       My QR code
-              //     </DropdownItem>
-              //     <DropdownItem>
-              //       My Verification Timeline
-              //     </DropdownItem>
-              //     <DropdownItem divider />
-              //     <DropdownItem>
-              //       Reset
-              //     </DropdownItem>
-              //   </DropdownMenu>
-              // </UncontrolledDropdown>
-            }
+
+              <UncontrolledDropdown nav inNavbar>
+                <DropdownToggle nav caret>
+                  Verify Someone
+                </DropdownToggle>
+                <DropdownMenu right>
+                  <DropdownItem>
+                    <NavItem>
+                      <NavLink href="/my-code/">My QR code</NavLink>
+                    </NavItem>
+                  </DropdownItem>
+                  <DropdownItem>
+                    <NavItem>
+                      <NavLink href="/requests/">Verification Requests</NavLink>
+                    </NavItem>
+                  </DropdownItem>
+                  {/* <DropdownItem divider />
+                  <DropdownItem>
+                    Reset
+                  </DropdownItem> */}
+                </DropdownMenu>
+              </UncontrolledDropdown>
             </Nav>
           </Collapse>
         </Navbar>
