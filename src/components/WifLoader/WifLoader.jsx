@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, FormGroup, Input } from 'reactstrap';
 import QrReader from "react-qr-reader";
 import {getFromLS, saveToLS} from "../../utils/client";
 import {NotificationManager} from 'react-notifications';
@@ -38,7 +38,7 @@ export default class WifLoader extends React.Component {
     e.preventDefault();
     console.log("submit wif loader", this.state.address, getFromLS('verifierAddress', 'value'));
     saveToLS('verifierAddress', 'value', this.state.address);
-    NotificationManager.success('Success message', 'Address was saved');
+    NotificationManager.success('Success', 'Address was saved');
     this.props.onSubmit && this.props.onSubmit(this.state.address);
   }
 
@@ -50,7 +50,7 @@ export default class WifLoader extends React.Component {
     console.log('address: ', address, account);
     saveToLS('userWif', 'value', this.state.wif);
     saveToLS('userAddress', 'value', address);
-    NotificationManager.success('Success message', 'You WIF has been saved');
+    NotificationManager.success('Success', 'Your WIF has been saved');
     this.props.onSubmit && this.props.onSubmit(this.state.wif);
   }
 
@@ -92,7 +92,7 @@ export default class WifLoader extends React.Component {
             onScan={this.handleScan}
             className="qrCodeScanner"
           />}
-        {this.state.scanner && <button role="button" onClick={() => this.setState({scanner: false})} className="closeButton fixed white">CLOSE SCANNER</button>}
+        {this.state.scanner && <button type="button" onClick={() => this.setState({scanner: false})} className="closeButton fixed white">CLOSE SCANNER</button>}
       </div>
       : <div className="stepContainer text-center">
         <form onSubmit={(e) => this.submitWif(e)} style={{textAlign: 'center'}}>
@@ -117,7 +117,7 @@ export default class WifLoader extends React.Component {
             onScan={this.handleScan}
             className="qrCodeScanner"
           />}
-        {this.state.scanner && <button role="button" onClick={() => this.setState({scanner: false})} className="closeButton fixed white">CLOSE SCANNER</button>}
+        {this.state.scanner && <button onClick={() => this.setState({scanner: false})} className="closeButton fixed white">CLOSE SCANNER</button>}
       </div>
     )
   }

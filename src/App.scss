@@ -21,7 +21,7 @@ h2 {
 
 .navbar-brand {
   display: inline-block;
-  width: calc(100% - 72px);
+  max-width: calc(100% - 72px);
   height: 70px;
 }
 
@@ -56,6 +56,10 @@ h2 {
   // align-items: center;
   justify-content: center;
   padding-top: 85px;
+}
+
+.notification-container {
+  top: 95px !important;
 }
 
 .content {
@@ -157,6 +161,7 @@ $margin: 30px;
 
   // Wrappers around cells and other wrappers: flex, row
   .wrapper {
+    justify-content: space-around;
     display: flex;           display: -webkit-flex;
     flex-direction: row;     -webkit-flex-direction: row;
     flex-grow: 1;            -webkit-flex-grow: 1;
@@ -177,7 +182,7 @@ $margin: 30px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    padding-left: 15px;
+    // padding-left: 15px;
   }
 
   // Fix the minimum width of the leaf level cells
