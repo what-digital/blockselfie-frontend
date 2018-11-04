@@ -1,23 +1,14 @@
 import "../../App.scss";
-<<<<<<< HEAD
-import {Button} from 'reactstrap';
-import React, {Component} from "react";
-import {connect} from "react-redux";
-=======
 import { Button } from 'reactstrap';
 import React, { Component } from "react";
 import { connect } from "react-redux";
->>>>>>> b84825f48262841ba67c6c9b4fb3a81177d08d4a
 import * as actions from "../../actions/firebase";
 import {NotificationManager} from 'react-notifications';
 import WebcamCapture from "../../components/WebcamCapture/WebcamCapture";
 
-<<<<<<< HEAD
 
 import {wallet} from '@cityofzion/neon-js';
 
-=======
->>>>>>> b84825f48262841ba67c6c9b4fb3a81177d08d4a
 import {getFromLS} from "../../utils/client";
 
 var MD5 = require("crypto-js/md5");
@@ -78,14 +69,7 @@ class Requests extends Component {
           </div>
         </div>
         <div className="wrapper">
-<<<<<<< HEAD
-          <div className="group">
-            <Button onClick={() => this.setState({step: 1, sourceWif: wif})} outline color="success"
-                    type="button">Accept</Button>
-          </div>
-=======
           <Button onClick={() => this.setState({step: 1, sourceWif: wif})} outline color="success" type="button">Accept</Button>
->>>>>>> b84825f48262841ba67c6c9b4fb3a81177d08d4a
         </div>
       </div>
     )
@@ -133,11 +117,11 @@ class Requests extends Component {
     const account = new wallet.Account(wif);
     console.log('SHA: ',);
     console.log('renderHeader', this.props.coords && this.props.coords.latitude);
-<<<<<<< HEAD
+
     addImage(this.state.imageHash, this.state.imageSrc, this.props.coords.latitude, this.props.coords.longitude)
       .then((res) => NotificationManager.success('Success message', 'You have been verified'))
       .then(() => {
-        fetch('http://sc-be.what.digital/confirm-verification-request', {
+        fetch('https://blockselfie-backend.what.digital/api/confirm-verification-request', {
           method: 'post',
           headers: {
             'Content-Type': 'application/json'
@@ -152,18 +136,6 @@ class Requests extends Component {
           .then(res => console.log(res));
       });
   };
-=======
-    addImage(this.state.imageHash, this.state.imageSrc, this.props.coords.latitude, this.props.coords.longitude).then((res) => {NotificationManager.success('Success', 'You have verified')});
-    fetch('https://blockselfie-backend.what.digital/api/confirm-verification-request', {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({"wif": this.state.sourceWif, "image_hash": this.state.imageHash ,"target_address": getFromLS('userAddress', 'value')})
-    }).then(res=>res.json())
-      .then(res => console.log(res));
-  }
->>>>>>> b84825f48262841ba67c6c9b4fb3a81177d08d4a
 
   renderSteps(step) {
     if (step === 0) {
@@ -190,16 +162,6 @@ class Requests extends Component {
         </div>
       )
     } else if (step === 2) {
-<<<<<<< HEAD
-      return (<div className="content col-12 text-center d-block">
-        <h1>
-          Complete Verification Process
-        </h1>
-        <div className="col-12">Image hash: {this.state.imageHash}</div>
-        <img src={this.state.imageSrc} style={{width: '200px'}}/>
-        <Button type="button" onClick={this.submitImage} outline color="success"
-                className="mt-2 d-block mx-auto">Submit</Button>
-=======
       return (<div className="content col-12 text-center">
         <div>
           <h1>
@@ -209,7 +171,6 @@ class Requests extends Component {
           <img alt="selfieShot" src={this.state.imageSrc} style={{width: '200px'}} className="mx-auto"/>
           <Button type="button" onClick={this.submitImage} outline color="success" className="mt-2 d-block mx-auto">Submit</Button>
         </div>
->>>>>>> b84825f48262841ba67c6c9b4fb3a81177d08d4a
       </div>)
     }
   }
