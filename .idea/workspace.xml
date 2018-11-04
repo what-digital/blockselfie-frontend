@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="063f32d8-39d6-4c01-9629-a73022e2fc8d" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/actions/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/actions/neo/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/actions/neo/types.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/HomePage/HomePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/HomePage/HomePage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/neo/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/neo/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/dataReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/dataReducer.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,13 +16,67 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/actions/neo/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="97">
-              <caret line="5" column="94" selection-start-line="5" selection-start-column="94" selection-end-line="5" selection-end-column="94" />
+            <state relative-caret-position="443">
+              <caret line="96" column="20" selection-start-line="96" selection-start-column="10" selection-end-line="96" selection-end-column="20" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dataReducer.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/reducers/dataReducer.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="126">
+              <caret line="6" column="27" lean-forward="true" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
+              <folding>
+                <element signature="e#0#52#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="types.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/actions/neo/types.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="24" selection-start-column="24" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/actions/todo/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="294">
+              <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+              <folding>
+                <element signature="e#0#49#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="types.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/actions/todo/types.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="13" selection-start-column="13" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/actions/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="189">
+              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+              <folding>
+                <element signature="e#1#32#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -51,7 +104,7 @@
         <entry file="file://$PROJECT_DIR$/node_modules/@cityofzion/neon-core/lib/rpc/RPCClient.d.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="2394">
-              <caret line="116" column="50" lean-forward="true" selection-start-line="116" selection-start-column="50" selection-end-line="116" selection-end-column="50" />
+              <caret line="116" column="50" selection-start-line="116" selection-start-column="50" selection-end-line="116" selection-end-column="50" />
             </state>
           </provider>
         </entry>
@@ -81,6 +134,8 @@
       <find>invoke</find>
       <find>rpc</find>
       <find>GETRPC</find>
+      <find>wif</find>
+      <find>net</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$</dir>
@@ -102,7 +157,9 @@
         <option value="$PROJECT_DIR$/src/actions/index.js" />
         <option value="$PROJECT_DIR$/src/components/ToDoListItem.js" />
         <option value="$PROJECT_DIR$/src/containers/HomePage/HomePage.jsx" />
+        <option value="$PROJECT_DIR$/src/actions/neo/types.js" />
         <option value="$PROJECT_DIR$/src/actions/neo/index.js" />
+        <option value="$PROJECT_DIR$/src/reducers/dataReducer.js" />
       </list>
     </option>
   </component>
@@ -149,44 +206,13 @@
             <path>
               <item name="neo-hackaton-zurich" type="b2602c69:ProjectViewProjectNode" />
               <item name="neo-hackaton-zurich" type="462c0819:PsiDirectoryNode" />
-              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="neo-hackaton-zurich" type="b2602c69:ProjectViewProjectNode" />
-              <item name="neo-hackaton-zurich" type="462c0819:PsiDirectoryNode" />
-              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
-              <item name="@cityofzion" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="neo-hackaton-zurich" type="b2602c69:ProjectViewProjectNode" />
-              <item name="neo-hackaton-zurich" type="462c0819:PsiDirectoryNode" />
-              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
-              <item name="@cityofzion" type="462c0819:PsiDirectoryNode" />
-              <item name="neon-core" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="neo-hackaton-zurich" type="b2602c69:ProjectViewProjectNode" />
-              <item name="neo-hackaton-zurich" type="462c0819:PsiDirectoryNode" />
-              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
-              <item name="@cityofzion" type="462c0819:PsiDirectoryNode" />
-              <item name="neon-core" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="neo-hackaton-zurich" type="b2602c69:ProjectViewProjectNode" />
-              <item name="neo-hackaton-zurich" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="neo-hackaton-zurich" type="b2602c69:ProjectViewProjectNode" />
-              <item name="neo-hackaton-zurich" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="neo-hackaton-zurich" type="b2602c69:ProjectViewProjectNode" />
               <item name="neo-hackaton-zurich" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
+              <item name="actions" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -240,10 +266,11 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.3295688" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.3295688" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="right" id="SciView" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -256,7 +283,6 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -307,6 +333,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="572">
           <caret line="38" column="38" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="38" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -347,17 +376,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/actions/todo/types.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/ToDoListItem.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="436">
           <caret line="28" column="43" selection-start-line="28" selection-start-column="43" selection-end-line="28" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -372,20 +397,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1054">
           <caret line="105" column="38" selection-start-line="105" selection-start-column="23" selection-end-line="105" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/actions/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/actions/todo/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="7" column="25" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -422,7 +436,7 @@
     <entry file="file://$PROJECT_DIR$/node_modules/@cityofzion/neon-core/lib/rpc/RPCClient.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2394">
-          <caret line="116" column="50" lean-forward="true" selection-start-line="116" selection-start-column="50" selection-end-line="116" selection-end-column="50" />
+          <caret line="116" column="50" selection-start-line="116" selection-start-column="50" selection-end-line="116" selection-end-column="50" />
         </state>
       </provider>
     </entry>
@@ -440,12 +454,56 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/actions/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <element signature="e#1#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/actions/todo/types.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="13" selection-start-column="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/actions/neo/types.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="24" selection-start-column="24" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/actions/todo/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#49#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/actions/neo/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="97">
-          <caret line="5" column="94" selection-start-line="5" selection-start-column="94" selection-end-line="5" selection-end-column="94" />
+        <state relative-caret-position="443">
+          <caret line="96" column="20" selection-start-line="96" selection-start-column="10" selection-end-line="96" selection-end-column="20" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reducers/dataReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="6" column="27" lean-forward="true" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#52#0" expanded="true" />
           </folding>
         </state>
       </provider>

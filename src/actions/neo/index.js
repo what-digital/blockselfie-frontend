@@ -2,6 +2,7 @@ import Neon from '@cityofzion/neon-js';
 import {rpc, api, u, sc, wallet} from '@cityofzion/neon-js';
 import {todosRef} from "../../config/firebase";
 import {FETCH_TODOS} from "../todo/types";
+import {DECODE_WIF} from "./types";
 
 console.log(new wallet.Account('L3QGJ5FMg7LQWYkVekkwRDyYL3HXTw3ntYrTupjp3EViru7kTGN7').address)
 
@@ -89,3 +90,11 @@ export const getName = () => {
 // Neon.doInvoke(config).then(res => {
 //   console.log(res);
 // });
+
+export const decodeWIF = wif => async dispatch => {
+  const account = wallet.Account(wif);
+  dispatch({
+    type: DECODE_WIF,
+    payload: account.address
+  })
+};
