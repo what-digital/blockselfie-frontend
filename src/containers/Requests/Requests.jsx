@@ -1,7 +1,7 @@
 import "../../App.scss";
-import { Button } from 'reactstrap';
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import {Button} from 'reactstrap';
+import React, {Component} from "react";
+import {connect} from "react-redux";
 import * as actions from "../../actions/firebase";
 import {NotificationManager} from 'react-notifications';
 import WebcamCapture from "../../components/WebcamCapture/WebcamCapture";
@@ -69,7 +69,8 @@ class Requests extends Component {
           </div>
         </div>
         <div className="wrapper">
-          <Button onClick={() => this.setState({step: 1, sourceWif: wif})} outline color="success" type="button">Accept</Button>
+          <Button onClick={() => this.setState({step: 1, sourceWif: wif})} outline color="success"
+                  type="button">Accept</Button>
         </div>
       </div>
     )
@@ -121,14 +122,14 @@ class Requests extends Component {
     addImage(this.state.imageHash, this.state.imageSrc, this.props.coords.latitude, this.props.coords.longitude)
       .then((res) => NotificationManager.success('Success message', 'You have been verified'))
       .then(() => {
-        fetch('https://blockselfie-backend.what.digital/api/confirm-verification-request', {
-          method: 'post',
+        fetch('https://blockselfie-backend.what.digital/api/confirm-verification/', {
+          method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            "wif": account.WIF,
-            "source_address": account.address,
+            "sender_address_wif": account.WIF,
+            "sender_address": account.address,
             "image_hash": this.state.imageHash,
             "target_address": getFromLS('userAddress', 'value')
           })
@@ -169,7 +170,8 @@ class Requests extends Component {
           </h1>
           <div className="col-12">Image hash: {this.state.imageHash}</div>
           <img alt="selfieShot" src={this.state.imageSrc} style={{width: '200px'}} className="mx-auto"/>
-          <Button type="button" onClick={this.submitImage} outline color="success" className="mt-2 d-block mx-auto">Submit</Button>
+          <Button type="button" onClick={this.submitImage} outline color="success"
+                  className="mt-2 d-block mx-auto">Submit</Button>
         </div>
       </div>)
     }

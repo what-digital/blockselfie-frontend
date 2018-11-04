@@ -1,11 +1,13 @@
 import "../../App.scss";
-import { Button } from 'reactstrap';
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import {Button} from 'reactstrap';
+import React, {Component} from "react";
+import {connect} from "react-redux";
 // import _ from "lodash";
 import * as actions from "../../actions";
 import {getFromLS} from "../../utils/client";
 import WifLoader from "../../components/WifLoader/WifLoader";
+import {wallet} from '@cityofzion/neon-js';
+
 var QRCode = require('qrcode.react');
 
 
@@ -27,20 +29,25 @@ class GetVerified extends Component {
 
   submitWif = (value) => {
     console.log("submit wif", value);
-    const { sendWif } = this.props;
+    const {sendWif} = this.props;
     sendWif({'wif': value});
     this.setState({step: 1});
   }
 
   initiateVerification = (address) => {
-    console.log('initiateVerification', address, JSON.stringify({"wif": getFromLS('userWif', 'value') ,"source_address": address}));
-    fetch('https://blockselfie-backend.what.digital/api/create-verification-request', {
+    const account = new wallet.Account(getFromLS('userWif', 'value'));
+    fetch('https://blockselfie-backend.what.digital/api/request-verification/', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({"wif": getFromLS('userWif', 'value') ,"source_address": address})
-    }).then(res=>res.json())
+      body: JSON.stringify({
+        sender_address: account.address,
+        sender_address_wif: account.WIF,
+        "source_address": address
+      })
+    })
+      .then(res => res.json())
       .then(res => console.log(res));
     this.setState({step: 3});
   }
@@ -102,7 +109,7 @@ class GetVerified extends Component {
   }
 
   render() {
-    const { step } = this.state;
+    const {step} = this.state;
     return (
       <div className="content">
         {
@@ -113,7 +120,7 @@ class GetVerified extends Component {
   }
 }
 
-const mapStateToProps = ({ data }) => {
+const mapStateToProps = ({data}) => {
   return {
     data
   };
