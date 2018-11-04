@@ -30,9 +30,9 @@ class Timeline extends Component {
     this.props.fetchImages();
   }
 
-  renderRow(image) {
+  renderRow(image, idx) {
     return (
-      image.base64 && <div className="table-row bordered mb-4">
+      image.base64 && <div className="table-row bordered mb-4" key={idx}>
         <div className="wrapper">
           <div className="">
             <img src={image.base64} style={{width: '200px'}} className="mb-2"/>
@@ -62,7 +62,7 @@ class Timeline extends Component {
         <div className="content col-12">
           <h2 className="mb-2">Your Timeline</h2>
           {this.props.data && Object.keys(this.props.data).map((key, idx) => {
-            return this.renderRow(this.props.data[key])
+            return this.renderRow(this.props.data[key], idx)
           })
             }
         </div>

@@ -14,6 +14,7 @@ export default class WifLoader extends React.Component {
       scannerResult: null,
       wif: this.props.wif,
       scanner: false,
+      address: null
     };
   }
 
@@ -23,13 +24,22 @@ export default class WifLoader extends React.Component {
       this.setState({
         scannerResult: data,
         scanner: false,
-        wif: data
+        wif: data,
+        address: data
       });
     }
   }
 
   handleError(err) {
     console.error(err);
+  }
+
+   submitVerifierWif = (e) => {
+    e.preventDefault();
+    console.log("submit wif loader", this.state.address, getFromLS('verifierAddress', 'value'));
+    saveToLS('verifierAddress', 'value', this.state.address);
+    NotificationManager.success('Success message', 'Address was saved');
+    this.props.onSubmit && this.props.onSubmit(this.state.address);
   }
 
   submitWif = (e) => {
@@ -54,12 +64,37 @@ export default class WifLoader extends React.Component {
             <QRCode value={getFromLS('userWif', 'value')} size={330}/>
           </div>
         </div>
-{/* {        <div className="col-12 mt-2">
+{/* {<div className="col-12 mt-2">
           <Button type="button">Start Verification</Button>
         </div>} */}
       </div>
           ) : (
+      this.props.verifier ?
       <div className="stepContainer text-center">
+        <form onSubmit={(e) => this.submitVerifierWif(e)} style={{textAlign: 'center'}}>
+           <FormGroup>
+             <Label for="wif">Verifiers address</Label>
+             <button type="button" className="qrCodeButton" title="Use QRCode Scaner" onClick={() => this.setState({scanner: !this.state.scanner})}>
+                 <FontAwesome
+                   className='qrcode'
+                   name='qrcode'
+                   size='2x'
+                   style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
+                 />
+             </button>
+             <Input type="text" name="WIF" id="wif" placeholder="WIF" value={this.state.address} onChange={(e) => this.setState({address: e.target.value})} />
+           </FormGroup>
+           <Button type="submit" outline color="success">Submit</Button>
+         </form>
+         {this.state.scanner && <QrReader
+            delay={this.state.delay}
+            onError={this.handleError}
+            onScan={this.handleScan}
+            className="qrCodeScanner"
+          />}
+        {this.state.scanner && <button role="button" onClick={() => this.setState({scanner: false})} className="closeButton fixed white">CLOSE SCANNER</button>}
+      </div>
+      : <div className="stepContainer text-center">
         <form onSubmit={(e) => this.submitWif(e)} style={{textAlign: 'center'}}>
            <FormGroup>
              <Label for="wif">Enter Your WIF</Label>

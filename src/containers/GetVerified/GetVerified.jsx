@@ -33,6 +33,19 @@ class GetVerified extends Component {
     this.setState({step: 1});
   }
 
+  initiateVerification = (address) => {
+    console.log('initiateVerification', address, JSON.stringify({"wif": getFromLS('userWif', 'value') ,"source_address": address}));
+    fetch('http://sc-be.what.digital/create-verification-request', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({"wif": getFromLS('userWif', 'value') ,"source_address": address})
+    }).then(res=>res.json())
+      .then(res => console.log(res));
+    this.setState({step: 3});
+  }
+
   renderStep0() {
     return (
       <WifLoader onSubmit={this.submitWif}/>
@@ -43,6 +56,17 @@ class GetVerified extends Component {
     return (
       <div className="stepContainer text-center">
         <div className="col-12 px-0">
+          <h2 className="mb-2">Addres of the verifying Person: </h2>
+        </div>
+        <WifLoader onSubmit={this.initiateVerification} verifier/>
+      </div>
+    )
+  }
+
+  renderStep2() {
+    return (
+      <div className="stepContainer text-center">
+        <div className="col-12 px-0">
           <h2 className="mb-2">Your NEO Wallet address: </h2>
           <p>{getFromLS('userAddress', 'value')}</p>
           <div className="col-12 px-0">
@@ -50,7 +74,17 @@ class GetVerified extends Component {
           </div>
         </div>
         <div className="col-12 mt-2">
-          <Button outline color="success" type="button">Start Verification</Button>
+          <Button outline color="success" type="button" onClick={this.setState({step: 3})}>Start Verification</Button>
+        </div>
+      </div>
+    )
+  }
+
+  renderStep3() {
+    return (
+      <div className="stepContainer text-center">
+        <div className="col-12 px-0">
+          <h2 className="mb-2">Your query was sent</h2>
         </div>
       </div>
     )
@@ -58,9 +92,13 @@ class GetVerified extends Component {
 
   renderSteps(step) {
     if (step === 0) {
-      return this.renderStep0()
-    } else if (step ===1) {
-      return this.renderStep1()
+      return this.renderStep0();
+    } else if (step === 1) {
+      return this.renderStep1();
+    } else if (step === 2) {
+      return this.renderStep2();
+    } else if (step === 3) {
+      return this.renderStep3();
     }
   }
 

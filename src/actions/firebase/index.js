@@ -5,7 +5,7 @@ export const addImage = (hash, base64, latitude, longitude) => async dispatch =>
   const date = new Date();
   const timestamp = date.getTime()/1000;
   console.log('addImage', hash, latitude, longitude, timestamp);
-  getImageRef(hash).set({'base64': base64, 'latitude': latitude, 'longitude': longitude ,'timestamp': timestamp});
+  return getImageRef(hash).set({'base64': base64, 'latitude': latitude, 'longitude': longitude ,'timestamp': timestamp});
   // imagesRef.push().set(base64);
 };
 
