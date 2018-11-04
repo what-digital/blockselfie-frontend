@@ -41,17 +41,27 @@
   justify-content: center;
 }
 
+.stepContainer {
+  width: 100%;
+}
+
 .closeButton {
-  position: fixed;
-  z-index: 10;
-  color: white;
-  left: 0;
-  top: 70px;
+  z-index: 9;
   background-color: transparent;
-  right: 0;
   margin: auto;
   display: block;
   width: 150px;
+
+  &.fixed {
+    left: 0;
+    top: 70px;
+    right: 0;
+    position: fixed;
+  }
+
+  &.white {
+    color: white;
+  }
 }
 
 .qrCodeButton {
@@ -66,12 +76,20 @@
   position: fixed;
   left: 0px;
   right: 0;
-  top: 115px;
-  bottom: 0;
+  top: 0;
+  /* bottom: 0; */
   height: 100vh;
   display: block;
-  max-width: 100vh;
+  /* max-width: 100vh; */
+  height: calc(100vh - 56px);
   margin: auto;
+  margin-top: 56px;
+  overflow: hidden;
+  background-color: black;
+}
+
+.navbar {
+  z-index: 10;
 }
 
 .icon-global {

@@ -42,15 +42,16 @@ export default class WifLoader extends React.Component {
   renderSteps() {
     return this.props.wif ? (
       <div className="stepContainer text-center">
-        <div className="col-12">
-          Your NEO Wallet address: {getFromLS('user', 'wif')}
-          <div className="col-12">
-            <QRCode value={getFromLS('user', 'wif')} size='360'/>
+        <div className="col-12 px-0">
+          <h2 className="mb-2">Your NEO Wallet address: </h2>
+          <p>{getFromLS('user', 'wif')}</p>
+          <div className="col-12 px-0">
+            <QRCode value={getFromLS('user', 'wif')} size={330}/>
           </div>
         </div>
-        <div className="col-12 mt-2">
+{/* {        <div className="col-12 mt-2">
           <Button type="button">Start Verification</Button>
-        </div>
+        </div>} */}
       </div>
           ) : (
       <div className="stepContainer text-center">

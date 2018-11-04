@@ -19,6 +19,7 @@ class Requests extends Component {
       wif: "",
       scannerResult: "",
       step: 0,
+      camera: false,
       scanner: false,
     };
   }
@@ -65,11 +66,15 @@ class Requests extends Component {
         </div>
         <div className="wrappe">
           <div className="group">
-            <button onClick={() => this.setState({step: 1})}>Accept</button>
+            <Button onClick={() => this.setState({step: 1})} outline color="success" type="button">Accept</Button>
           </div>
         </div>
       </div>
     )
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log('nextProps.history', nextProps.history.location.search);
   }
 
   renderHeader() {
@@ -96,6 +101,18 @@ class Requests extends Component {
     )
   }
 
+  goToStep2 = (image) => {
+    this.setState({step: 2, imageSrc: image});
+
+    this.props.history.push({
+      search: '?step=2',
+    })
+  }
+
+  submitHash() {
+    console.log('submiImage', this.state.imageSrc);
+  }
+
   renderSteps(step) {
     if (step === 0) {
       return (
@@ -107,16 +124,18 @@ class Requests extends Component {
     } else if (step === 1) {
       return (
         <div className="content col-12 d-flex justify-content-center">
-          <WebcamCapture photoTaken={(image) => {this.setState({step: 2, imageSrc: image})}}/>
+          {!this.state.camera && <Button outline color="success"  onClick={() => this.setState({camera: true})} className="closeButton">Take Selfie</Button>}
+          {this.state.camera && <WebcamCapture closeCamera={() => this.setState({camera: false})} photoTaken={(image) => this.goToStep2(image)} />}
         </div>
       )
     } else if (step === 2) {
-      return (<div className="content col-12">
+      return (<div className="content col-12 text-center">
         <h1>
           Complete Verification Process
         </h1>
-        <div>Image hash:</div>
-        <img src={this.state.imageSrc} />
+        <div className="col-12">Image hash:</div>
+        <img src={this.state.imageSrc} style={{width: '200px'}}/>
+        <Button type="button" onClick={this.submitImage} outline color="success" className="mt-2 d-block mx-auto">Submit</Button>
       </div>)
     }
   }
