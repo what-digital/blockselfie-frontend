@@ -50,7 +50,7 @@ class Timeline extends Component {
         <h2 className="">Your Timeline</h2>
         {this.state.loading && <Loading text="Fetching selfies" backdrop fixed/>}
         {this.props.data && Object.keys(this.props.data).map((key, idx) => {
-          return this.renderRow(this.props.data[key], idx)
+          return this.renderRow(this.props.data[key], key)
         })
           }
       </div>

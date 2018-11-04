@@ -51,7 +51,7 @@ class Lookup extends Component {
         <h2 className="">Lookup</h2>
          <FormGroup>
            {/* <Label for="wif">Confirm Identity</Label> */}
-           <button role="button" className="qrCodeButton" title="Use QRCode Scaner" onClick={() => this.setState({scanner: !this.state.scanner})}>
+           <button type="button" className="qrCodeButton" title="Use QRCode Scaner" onClick={() => this.setState({scanner: !this.state.scanner})}>
                <FontAwesome
                  className='qrcode'
                  name='qrcode'
@@ -69,7 +69,7 @@ class Lookup extends Component {
           onScan={this.handleScan}
           className="qrCodeScanner"
         />}
-        {this.state.scanner && <button role="button" onClick={() => this.setState({scanner: false})} className="closeButton fixed white">CLOSE SCANNER</button>}
+        {this.state.scanner && <button onClick={() => this.setState({scanner: false})} className="closeButton fixed white">CLOSE SCANNER</button>}
       </div>
     );
   }

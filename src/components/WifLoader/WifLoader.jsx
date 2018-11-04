@@ -50,7 +50,7 @@ export default class WifLoader extends React.Component {
     console.log('address: ', address, account);
     saveToLS('userWif', 'value', this.state.wif);
     saveToLS('userAddress', 'value', address);
-    NotificationManager.success('Success', 'You WIF has been saved');
+    NotificationManager.success('Success', 'Your WIF has been saved');
     this.props.onSubmit && this.props.onSubmit(this.state.wif);
   }
 
@@ -74,7 +74,7 @@ export default class WifLoader extends React.Component {
         <form onSubmit={(e) => this.submitVerifierWif(e)} style={{textAlign: 'center'}}>
            <FormGroup>
              {/* <Label for="wif">Address</Label> */}
-             <button role="button" className="qrCodeButton" title="Use QRCode Scaner" onClick={() => this.setState({scanner: !this.state.scanner})}>
+             <button type="button" className="qrCodeButton" title="Use QRCode Scaner" onClick={() => this.setState({scanner: !this.state.scanner})}>
                  <FontAwesome
                    className='qrcode'
                    name='qrcode'
@@ -117,7 +117,7 @@ export default class WifLoader extends React.Component {
             onScan={this.handleScan}
             className="qrCodeScanner"
           />}
-        {this.state.scanner && <button role="button" onClick={() => this.setState({scanner: false})} className="closeButton fixed white">CLOSE SCANNER</button>}
+        {this.state.scanner && <button onClick={() => this.setState({scanner: false})} className="closeButton fixed white">CLOSE SCANNER</button>}
       </div>
     )
   }
